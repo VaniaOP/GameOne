@@ -17,6 +17,17 @@ Game, where you can run in a forest, collect herbs, shrooms and leafs.
 * Start fire in camp
 * Sleep
 
+# Technical
+
+* 3d
+* Free camera
+* Day/Night cycle
+* Weather
+* Character Switch (?)
+* Pause / Settings
+* Controller / Keyboard support
+* Linux native (but no android)
+
 # Reference Games
 
 * Forest: Gameplay

@@ -1,41 +1,35 @@
 extends CharacterBody3D
 
-#Script from official docs
-#https://docs.godotengine.org/en/stable/getting_started/first_3d_game/03.player_movement_code.html
+const ROT_SPEED = 0.05
+const GRAVITY = -1
+const SPEED = 0.5
 
-# How fast the player moves in meters per second.
-@export var speed = 14
-# The downward acceleration when in the air, in meters per second squared.
-@export var fall_acceleration = 75
-
-var target_velocity = Vector3.ZERO
-
+func _ready():
+	G.player = self
 
 func _physics_process(delta):
-	var direction = Vector3.ZERO
-
-	if Input.is_action_pressed("D"):
-		direction.x += 1
-	if Input.is_action_pressed("A"):
-		direction.x -= 1
-	if Input.is_action_pressed("S"):
-		direction.z += 1
-	if Input.is_action_pressed("W"):
-		direction.z -= 1
-
-	if direction != Vector3.ZERO:
-		direction = direction.normalized()
-		# Setting the basis property will affect the rotation of the node.
-		basis = Basis.looking_at(direction)
-
-	# Ground Velocity
-	target_velocity.x = direction.x * speed
-	target_velocity.z = direction.z * speed
-
-	# Vertical Velocity
-	if not is_on_floor(): # If in the air, fall towards the floor. Literally gravity
-		target_velocity.y = target_velocity.y - (fall_acceleration * delta)
-
-	# Moving the Character
-	velocity = target_velocity
+	if $RayCast3D.is_colliding():
+		G.UpTar(0.75, 1.2, 1.5, 'cam1')
+	else:
+		G.UpTar(0,2,4,'cam2')
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
+	if Input.is_action_pressed("ui_left"):
+		rotation.y += ROT_SPEED 
+	elif Input.is_action_pressed("ui_right"):
+		rotation.y -= ROT_SPEED
+	if Input.is_action_pressed('ui_up'):
+		velocity.z = -1
+	elif Input.is_action_pressed('ui_down'):
+		velocity.z = 1 
+	if velocity.z:
+		velocity = velocity.rotated(Vector3.UP, rotation.y) * SPEED
+	velocity.y += GRAVITY
 	move_and_slide()
+
+
+#Code taken from messages.
+#TODO
+#Set up char movement
+#Free camera
+#Check video I followed last time and copy

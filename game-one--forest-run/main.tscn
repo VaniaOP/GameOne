@@ -1,9 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://1krn2rji5b2d"]
+[gd_scene load_steps=11 format=3 uid="uid://1krn2rji5b2d"]
 
+[ext_resource type="Texture2D" uid="uid://cmkruuv80rx1a" path="res://icon.svg" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://nqpslx1t6fv4" path="res://Player.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://br6cvstjes1o7" path="res://citrus_orchard_road_puresky_2k.exr" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bnne2ogckmddo" path="res://camera_3d.tscn" id="3_h2yge"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
+albedo_texture = ExtResource("1_1bvp3")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_7dm0k"]
+material = SubResource("StandardMaterial3D_lquwl")
 size = Vector2(20, 20)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0xm2m"]
@@ -31,7 +37,13 @@ mesh = SubResource("PlaneMesh_7dm0k")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_0xm2m")
 
-[node name="Animations" parent="." instance=ExtResource("1_ig7tw")]
+[node name="Camera3D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_h2yge")]
+transform = Transform3D(-0.9999155, 0, 0.013002355, 0, 1, 0, -0.013002355, 0, -0.9999155, 0, 1.8066874, -2.5239887)
+target = NodePath("../Player")
+offset = Vector3(0, 0.75, -2)
+
+[node name="Player" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9924638, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_h2yge")

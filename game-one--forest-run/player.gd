@@ -1,35 +1,23 @@
 extends CharacterBody3D
 
-const ROT_SPEED = 0.05
+#const ROT_SPEED = 0.05
 const GRAVITY = -1
-const SPEED = 0.5
+const SPEED = 1.2
 
-func _ready():
-	G.player = self
-
-func _physics_process(delta):
-	if $RayCast3D.is_colliding():
-		G.UpTar(0.75, 1.2, 1.5, 'cam1')
-	else:
-		G.UpTar(0,2,4,'cam2')
-	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().quit()
+func _physics_process(_delta):
+	velocity = Vector3()
 	if Input.is_action_pressed("ui_left"):
-		rotation.y += ROT_SPEED 
+		velocity.x = 1
 	elif Input.is_action_pressed("ui_right"):
-		rotation.y -= ROT_SPEED
+		velocity.x = -1
 	if Input.is_action_pressed('ui_up'):
-		velocity.z = -1
+		velocity.z = 1
 	elif Input.is_action_pressed('ui_down'):
-		velocity.z = 1 
-	if velocity.z:
+		velocity.z = -1 
+	if velocity:
+		$AnimationPlayer.play("Walk")
 		velocity = velocity.rotated(Vector3.UP, rotation.y) * SPEED
+	else:
+		$AnimationPlayer.play("Idle", )
 	velocity.y += GRAVITY
 	move_and_slide()
-
-
-#Code taken from messages.
-#TODO
-#Set up char movement
-#Free camera
-#Check video I followed last time and copy

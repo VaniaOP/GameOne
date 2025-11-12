@@ -1,39 +1,50 @@
 extends Marker3D
 
 @export_node_path() var target_node :NodePath
+@export var max_distance:float:
+	set(value):
+		max_distance = clamp(value, MIN_DIST, MAX_DIST)
+@export var offset = Vector3(0, 1.5, 0)
+
+const MAX_DIST = 7
+const MIN_DIST = 1
+
 var camera
 var target
 var rot_y = 0
 
+var is_control = false 
+
+var disable_dist_change = false
+
 func _ready():
+	Global.camera = self
 	target = get_node(target_node)
 	camera = $Camera3D
+	is_control = target.has_method('control')
+	disable_dist_change = 'disable_dist_change' in target && target.disable_dist_change
+	upd_detector()
 	
-func _process(delta: float) -> void:
-	transform.origin = target.transform.origin + Vector3(0, 1.5, 0)
-	if Input.is_action_pressed('ui_up'):
-		target.move_speed = -1
-		rot_y = rotation.y
-	elif Input.is_action_pressed('ui_down'):
-		target.move_speed = -1
-		rot_y = rotation.y - PI
-	elif Input.is_action_pressed('ui_left'):
-		target.move_speed = -1
-		rot_y = rotation.y + PI/2
-	elif Input.is_action_pressed('ui_right'):
-		target.move_speed = -1
-		rot_y = rotation.y - PI/2
-	else:
-		target.move_speed = 0 
-	
-	if target.move_speed:
-		target.transform.basis = Basis(target.transform.basis.get_rotation_quaternion().slerp(Basis(Vector3.UP, rot_y).get_rotation_quaternion(), 5*delta)) 
-	
+func _process(_delta: float) -> void:
+	transform.origin = target.transform.origin + offset
+	if is_control:
+		target.control(rotation.y)
 	if $detector.is_colliding():
 		camera.transform.origin.z = $detector.get_collision_point().distance_to(global_transform.origin) - 0.5
 	else:
-		camera.transform.origin.z = 5
+		camera.transform.origin.z = max_distance
+
+func upd_detector():
+	$detector.target_position.z = max_distance
 func _input(e):
 	if e is InputEventMouseMotion:
 		rotation.y -= e.relative.x * 0.01
 		rotation.x = clamp(rotation.x - e.relative.y * 0.01, -1, 0.2)
+	if e is InputEventMouseButton:
+		if not disable_dist_change:
+			if e.button_index == 5:
+				max_distance += 0.5
+				upd_detector()
+			elif e.button_index == 4:
+				max_distance -= 0.5
+				upd_detector()

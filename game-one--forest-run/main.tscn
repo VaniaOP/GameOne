@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://1krn2rji5b2d"]
+[gd_scene load_steps=15 format=3 uid="uid://1krn2rji5b2d"]
 
 [ext_resource type="Texture2D" uid="uid://cmkruuv80rx1a" path="res://icon.svg" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://nqpslx1t6fv4" path="res://Reusable-Scenes/Player.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://duc8ubf6tha67" path="res://Scripts/main.gd" id="1_lquwl"]
 [ext_resource type="Texture2D" uid="uid://br6cvstjes1o7" path="res://citrus_orchard_road_puresky_2k.exr" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://d1h4657ywlh4w" path="res://Reusable-Scenes/camera.tscn" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://v6v36qyhvdxb" path="res://Reusable-Scenes/player_2.tscn" id="6_7mycd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
 albedo_texture = ExtResource("1_1bvp3")
@@ -66,3 +67,6 @@ mesh = SubResource("BoxMesh_1bvp3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_1bvp3")
+
+[node name="Player 2" parent="." instance=ExtResource("6_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6368594, 0, 0)

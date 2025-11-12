@@ -17,9 +17,23 @@ func _ready():
 
 func _physics_process(_delta):
 	velocity = Vector3()
-	if move_speed:
+	#add jump
+	if Input.is_action_just_pressed("space"):
+		if is_on_floor():
+			S("Jump", "Jump")
+			velocity.y += 100
+	if move_speed and is_on_floor():
+		#add run and crouch
+		#may not be the best approach, but it works
+		if Input.is_action_pressed("shift"):
+			S('Run', 'Run')
+			move_speed *= 2.5
+		elif Input.is_action_pressed("ctrl"):
+			S('Sneak', 'Sneak')
+			move_speed *= 2
+		else:
+			S('Walk', 'Walk')
 		velocity.z = move_speed * SPEED
-		S('Walk', 'Walk')
 		velocity = velocity.rotated(Vector3.UP, rotation.y)
 	else:
 		S('Idle', 'Idle')
@@ -55,4 +69,4 @@ func control(y):
 			)
 		) 
 
-	
+#TODO: fix jump; see if move code is ok

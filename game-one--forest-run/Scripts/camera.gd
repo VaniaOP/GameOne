@@ -1,7 +1,7 @@
 extends Marker3D
 
 @export_node_path() var target_node :NodePath
-@export var max_distance:float:
+@export var max_distance:float=5.0:
 	set(value):
 		max_distance = clamp(value, MIN_DIST, MAX_DIST)
 @export var offset = Vector3(0, 1.5, 0)

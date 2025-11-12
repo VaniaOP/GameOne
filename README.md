@@ -1,5 +1,6 @@
 # Game One
-Game, where you can run in a forest, collect herbs, shrooms and leafs.
+
+Game, where you can run in a forest, collect herbs, shrooms and leafs. Explore Caves and mountains around. Just chill in this survival game
 
 # REQ
 
@@ -26,7 +27,7 @@ Game, where you can run in a forest, collect herbs, shrooms and leafs.
 * Character Switch (?)
 * Pause / Settings
 * Controller / Keyboard support
-* Linux native (but no android)
+* Linux native
 
 # Reference Games
 
@@ -38,3 +39,9 @@ Game, where you can run in a forest, collect herbs, shrooms and leafs.
 Get your characters and animations: [mixamo](https://www.mixamo.com/#/)
 
 Learn how to import blender into godot: [https://www.youtube.com/watch?v=59vKbXKuaNI](https://www.youtube.com/watch?v=59vKbXKuaNI)
+
+Other link are proprietary to ItGenio School
+
+# Info
+
+Game in development, started November 2025.

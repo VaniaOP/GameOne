@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 #const ROT_SPEED = 0.05
-const GRAVITY = -1
+const GRAVITY = -PI
 const SPEED = 1.2
 
 var state = ''
@@ -16,13 +16,11 @@ func _ready():
 	S('Idle', 'Idle')
 
 func _physics_process(_delta):
+	#Set velocity to zero
 	velocity = Vector3()
-	#add jump
-	if Input.is_action_just_pressed("space"):
-		if is_on_floor():
-			S("Jump", "Jump")
-			velocity.y += 100
-	if move_speed and is_on_floor():
+	if Input.is_action_pressed("space") and is_on_floor():
+		S('Jump', 'Jump')
+	elif move_speed:
 		#add run and crouch
 		#may not be the best approach, but it works
 		if Input.is_action_pressed("shift"):
@@ -37,7 +35,7 @@ func _physics_process(_delta):
 		velocity = velocity.rotated(Vector3.UP, rotation.y)
 	else:
 		S('Idle', 'Idle')
-	velocity.y += GRAVITY
+	#velocity.y += GRAVITY
 	move_and_slide()
 
 func S(s, a):
@@ -70,3 +68,4 @@ func control(y):
 		) 
 
 #TODO: fix jump; see if move code is ok
+#PROBLEM: The jumping animation starts, but is overwritten to idle when space is not pressed

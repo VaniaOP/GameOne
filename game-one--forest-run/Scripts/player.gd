@@ -17,25 +17,28 @@ func _ready():
 
 func _physics_process(_delta):
 	#Set velocity to zero
-	velocity = Vector3()
-	if Input.is_action_pressed("space") and is_on_floor():
-		S('Jump', 'Jump')
-	elif move_speed:
-		#add run and crouch
-		#may not be the best approach, but it works
-		if Input.is_action_pressed("shift"):
-			S('Run', 'Run')
-			move_speed *= 2.5
-		elif Input.is_action_pressed("ctrl"):
-			S('Sneak', 'Sneak')
-			move_speed *= 2
+	velocity = Vector3.ZERO
+	if is_on_floor():
+		if move_speed:
+			#add run and crouch
+			#may not be the best approach, but it works
+			if Input.is_action_pressed("shift"):
+				S('Run', 'Run')
+				move_speed *= 2.5
+			elif Input.is_action_pressed("ctrl"):
+				S('Sneak', 'Sneak')
+				move_speed *= 2
+			else:
+				S('Walk', 'Walk')
+			velocity.z = move_speed * SPEED
+			velocity = velocity.rotated(Vector3.UP, rotation.y)
 		else:
-			S('Walk', 'Walk')
-		velocity.z = move_speed * SPEED
-		velocity = velocity.rotated(Vector3.UP, rotation.y)
+			S('Idle', 'Idle')
+		if Input.is_action_just_pressed("space"):
+			S('Jump', 'Jump')
+			velocity.y += 100
 	else:
-		S('Idle', 'Idle')
-	#velocity.y += GRAVITY
+		velocity.y += GRAVITY
 	move_and_slide()
 
 func S(s, a):
@@ -43,7 +46,6 @@ func S(s, a):
 		state = s 
 	if a && a != anim:
 		$AnimationPlayer.play(a, 2)
-
 
 func control(y):
 	if Input.is_action_pressed('ui_up'):

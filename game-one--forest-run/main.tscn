@@ -1,10 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://1krn2rji5b2d"]
+[gd_scene load_steps=22 format=3 uid="uid://1krn2rji5b2d"]
 
 [ext_resource type="Texture2D" uid="uid://cmkruuv80rx1a" path="res://icon.svg" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://nqpslx1t6fv4" path="res://Reusable-Scenes/Player.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://duc8ubf6tha67" path="res://Scripts/main.gd" id="1_lquwl"]
 [ext_resource type="Texture2D" uid="uid://br6cvstjes1o7" path="res://citrus_orchard_road_puresky_2k.exr" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://d1h4657ywlh4w" path="res://Reusable-Scenes/camera.tscn" id="3_1bvp3"]
+[ext_resource type="Script" uid="uid://bqpew6g2egkru" path="res://addons/zylann.hterrain/hterrain.gd" id="6_5vw27"]
+[ext_resource type="Resource" uid="uid://cmy0ou4q5shwv" path="res://terrain/data.hterrain" id="7_kek77"]
+[ext_resource type="Script" uid="uid://vd35vycdvlv0" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="8_4c57u"]
+[ext_resource type="Texture2D" uid="uid://kfwejesgubak" path="res://heightmap/main_slot0_albedo_bump.png" id="9_dg77c"]
+[ext_resource type="Texture2D" uid="uid://btx0on2qyruit" path="res://heightmap/main_slot0_normal_roughness.png" id="10_ycdy4"]
+[ext_resource type="Script" uid="uid://r7a8dav2qix6" path="res://addons/zylann.hterrain/hterrain_detail_layer.gd" id="11_w48qg"]
+[ext_resource type="Texture2D" uid="uid://dphpry80b5drj" path="res://heightmap/Diffuse.exr" id="12_vivmo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
 albedo_texture = ExtResource("1_1bvp3")
@@ -33,6 +40,11 @@ size = Vector3(1, 5, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_lquwl"]
 size = Vector3(1, 5, 1)
 
+[sub_resource type="Resource" id="Resource_efxa6"]
+script = ExtResource("8_4c57u")
+mode = 0
+textures = [[ExtResource("9_dg77c")], [ExtResource("10_ycdy4")]]
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_lquwl")
 
@@ -56,7 +68,8 @@ target_node = NodePath("../Player")
 environment = SubResource("Environment_h2yge")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.9028556, 0.42994392, 0, -0.42994392, 0.9028556, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.9025852, 0.4305111, 0, -0.4305111, 0.9025852, 0, 0, 0)
+shadow_enabled = true
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8405079, 2.3538678, 0)
@@ -66,3 +79,34 @@ mesh = SubResource("BoxMesh_1bvp3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
 shape = SubResource("BoxShape3D_lquwl")
+
+[node name="HTerrain" type="Node3D" parent="."]
+script = ExtResource("6_5vw27")
+centered = true
+_terrain_data = ExtResource("7_kek77")
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_efxa6")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = null
+shader_params/u_tile_reduction = null
+metadata/_custom_type_script = "uid://bqpew6g2egkru"
+
+[node name="HTerrainDetailLayer" type="Node3D" parent="HTerrain"]
+script = ExtResource("11_w48qg")
+texture = ExtResource("12_vivmo")
+view_distance = 500.0
+shader_params/u_globalmap_tint_bottom = null
+shader_params/u_globalmap_tint_top = null
+shader_params/u_bottom_ao = null
+shader_params/u_instance_scale = null
+shader_params/u_roughness = null
+metadata/_custom_type_script = "uid://r7a8dav2qix6"

@@ -1,20 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://1krn2rji5b2d"]
+[gd_scene load_steps=8 format=3 uid="uid://1krn2rji5b2d"]
 
-[ext_resource type="Texture2D" uid="uid://cmkruuv80rx1a" path="res://icon.svg" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://nqpslx1t6fv4" path="res://Reusable-Scenes/Player.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://duc8ubf6tha67" path="res://Scripts/main.gd" id="1_lquwl"]
 [ext_resource type="Texture2D" uid="uid://br6cvstjes1o7" path="res://citrus_orchard_road_puresky_2k.exr" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://d1h4657ywlh4w" path="res://Reusable-Scenes/camera.tscn" id="3_1bvp3"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
-albedo_texture = ExtResource("1_1bvp3")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_7dm0k"]
-material = SubResource("StandardMaterial3D_lquwl")
-size = Vector2(20, 20)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0xm2m"]
-points = PackedVector3Array(10.154754, 0.15866803, 10.154754, -10.154754, -0.15866803, -10.154754, -10.154754, 0.15866803, -10.154754, 10.154754, -0.15866803, -10.154754, -10.154754, -0.15866803, 10.154754, -10.154754, 0.15866803, 10.154754, 10.154754, 0.15866803, -10.154754, 10.154754, -0.15866803, 10.154754)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ig7tw"]
 panorama = ExtResource("2_0xm2m")
@@ -27,24 +16,8 @@ background_mode = 2
 background_energy_multiplier = 0.25
 sky = SubResource("Sky_0xm2m")
 
-[sub_resource type="BoxMesh" id="BoxMesh_1bvp3"]
-size = Vector3(1, 5, 1)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1bvp3"]
-points = PackedVector3Array(0.5714286, 2.5386884, 0.5714286, -0.5, -2.3573534, -0.5, -0.53968257, -2.5386884, 0.5714286, 0.5714286, -2.5386884, -0.53968257, -0.5, 2.3573534, -0.5, 0.5714286, -2.5386884, 0.5714286, -0.53968257, 2.5386884, 0.5714286, 0.5714286, 2.5386884, -0.53968257)
-
 [node name="Main" type="Node3D"]
 script = ExtResource("1_lquwl")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022017002, 0, 0)
-mesh = SubResource("PlaneMesh_7dm0k")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15369195, 0)
-shape = SubResource("ConvexPolygonShape3D_0xm2m")
 
 [node name="Camera" parent="." instance=ExtResource("3_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9924638, 0)
@@ -57,12 +30,3 @@ environment = SubResource("Environment_h2yge")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.9028556, 0.42994392, 0, -0.42994392, 0.9028556, 0, 0, 0)
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8405079, 2.3538678, 0)
-mesh = SubResource("BoxMesh_1bvp3")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_1bvp3")

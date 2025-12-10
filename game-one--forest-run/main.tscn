@@ -1,13 +1,21 @@
-[gd_scene load_steps=14 format=3 uid="uid://1krn2rji5b2d"]
+[gd_scene load_steps=22 format=3 uid="uid://1krn2rji5b2d"]
 
 [ext_resource type="PackedScene" uid="uid://d1h4657ywlh4w" path="res://Reusable-Scenes/camera.tscn" id="1_lquwl"]
 [ext_resource type="PackedScene" uid="uid://nqpslx1t6fv4" path="res://Reusable-Scenes/Player.tscn" id="2_7mycd"]
 [ext_resource type="Script" uid="uid://bqpew6g2egkru" path="res://addons/zylann.hterrain/hterrain.gd" id="3_272bh"]
 [ext_resource type="Resource" uid="uid://cmy0ou4q5shwv" path="res://terrain/data.hterrain" id="4_5vw27"]
 [ext_resource type="Script" uid="uid://vd35vycdvlv0" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="5_kek77"]
-[ext_resource type="Texture2D" uid="uid://c4xq4j16ot7m3" path="res://main_slot0_albedo_bump.png" id="6_5vw27"]
+[ext_resource type="Texture2D" uid="uid://dcpd28rok8aga" path="res://main_slot0_albedo_bump.png" id="6_5vw27"]
 [ext_resource type="Texture2D" uid="uid://br6cvstjes1o7" path="res://citrus_orchard_road_puresky_2k.exr" id="6_7mycd"]
-[ext_resource type="Texture2D" uid="uid://bukxc1m5gn1xl" path="res://main_slot0_normal_roughness.png" id="7_kek77"]
+[ext_resource type="Texture2D" uid="uid://btypgdwew8dn4" path="res://main_slot1_albedo_bump.png" id="7_dg77c"]
+[ext_resource type="Texture2D" uid="uid://b0o84p6ys17hl" path="res://main_slot0_normal_roughness.png" id="7_kek77"]
+[ext_resource type="Texture2D" uid="uid://b87c7vgy1kekm" path="res://main_slot1_normal_roughness.png" id="9_ycdy4"]
+[ext_resource type="Script" uid="uid://r7a8dav2qix6" path="res://addons/zylann.hterrain/hterrain_detail_layer.gd" id="10_w48qg"]
+[ext_resource type="Texture2D" uid="uid://6jmdwj3vn6m0" path="res://addons/zylann.hterrain/tools/icons/icon_detail_layer_node.svg" id="11_vivmo"]
+[ext_resource type="Texture2D" uid="uid://da0pulhgx81py" path="res://models/low-poly-trees-flowers-and-grass/source/mmc-trees-flowers-grass_8.png" id="11_w48qg"]
+[ext_resource type="Texture2D" uid="uid://c4d27kcdqmvki" path="res://models/low-poly-trees-flowers-and-grass/textures/daffodil-stem-01-diffuse.png" id="13_vivmo"]
+[ext_resource type="Texture2D" uid="uid://clohqqcuejvg1" path="res://models/spruce/source/spruce_26e72b74f5a97b0edf8d6f980e9d8863_upscayl_1x_realesrgan-x4plus.png" id="14_2cqfq"]
+[ext_resource type="ArrayMesh" uid="uid://ciijh1f20c6hd" path="res://models/tree.obj" id="15_2cqfq"]
 
 [sub_resource type="GDScript" id="GDScript_7mycd"]
 script/source = "extends Node3D
@@ -23,7 +31,7 @@ func _process(delta: float) -> void:
 [sub_resource type="Resource" id="Resource_4c57u"]
 script = ExtResource("5_kek77")
 mode = 0
-textures = [[ExtResource("6_5vw27")], [ExtResource("7_kek77")]]
+textures = [[ExtResource("6_5vw27"), ExtResource("7_dg77c")], [ExtResource("7_kek77"), ExtResource("9_ycdy4")]]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_272bh"]
 panorama = ExtResource("6_7mycd")
@@ -42,7 +50,7 @@ script = SubResource("GDScript_7mycd")
 target_node = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("2_7mycd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 491.927, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.040306, 309.1645, -0.19738483)
 
 [node name="HTerrain" type="Node3D" parent="."]
 script = ExtResource("3_272bh")
@@ -66,6 +74,44 @@ shader_params/u_globalmap_blend_start = null
 shader_params/u_globalmap_blend_distance = null
 shader_params/u_colormap_opacity_per_texture = null
 metadata/_custom_type_script = "uid://bqpew6g2egkru"
+
+[node name="grass" type="Node3D" parent="HTerrain"]
+script = ExtResource("10_w48qg")
+texture = ExtResource("11_w48qg")
+view_distance = 500.0
+density = 1.2
+shader_params/u_globalmap_tint_bottom = null
+shader_params/u_globalmap_tint_top = null
+shader_params/u_bottom_ao = null
+shader_params/u_instance_scale = null
+shader_params/u_roughness = null
+metadata/_editor_icon = ExtResource("11_vivmo")
+
+[node name="plants" type="Node3D" parent="HTerrain"]
+script = ExtResource("10_w48qg")
+layer_index = 1
+texture = ExtResource("13_vivmo")
+density = 0.014
+shader_params/u_globalmap_tint_bottom = 0.0
+shader_params/u_globalmap_tint_top = 0.0
+shader_params/u_bottom_ao = 0.0
+shader_params/u_instance_scale = Vector3(1, 1, 1)
+shader_params/u_roughness = 10.0
+metadata/_editor_icon = ExtResource("11_vivmo")
+
+[node name="Trees" type="Node3D" parent="HTerrain"]
+script = ExtResource("10_w48qg")
+layer_index = 2
+texture = ExtResource("14_2cqfq")
+view_distance = 500.0
+density = 0.012
+instance_mesh = ExtResource("15_2cqfq")
+shader_params/u_globalmap_tint_bottom = 0.0
+shader_params/u_globalmap_tint_top = 0.0
+shader_params/u_bottom_ao = 1.0
+shader_params/u_instance_scale = Vector3(2, 2, 2)
+shader_params/u_roughness = 10.0
+metadata/_editor_icon = ExtResource("11_vivmo")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.7726782, 0.63479793, 0, -0.63479793, 0.7726782, 0, 0, 0)

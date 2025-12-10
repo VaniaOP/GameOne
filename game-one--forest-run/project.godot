@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Game One: Forest Run"
-run/main_scene="res://main.tscn"
+run/main_scene="uid://1krn2rji5b2d"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -22,6 +22,10 @@ Global="*res://global.gd"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/zylann.hterrain/plugin.cfg")
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input]
 

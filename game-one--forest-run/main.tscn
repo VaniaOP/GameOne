@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://1krn2rji5b2d"]
 
-[ext_resource type="PackedScene" uid="uid://d1h4657ywlh4w" path="res://Reusable-Scenes/camera.tscn" id="1_lquwl"]
+[ext_resource type="PackedScene" uid="uid://d1h4657ywlh4w" path="res://Reusable-Scenes/camera.tscn" id="1_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://nqpslx1t6fv4" path="res://Reusable-Scenes/Player.tscn" id="2_7mycd"]
 [ext_resource type="Script" uid="uid://bqpew6g2egkru" path="res://addons/zylann.hterrain/hterrain.gd" id="3_272bh"]
 [ext_resource type="Resource" uid="uid://cmy0ou4q5shwv" path="res://terrain/data.hterrain" id="4_5vw27"]
@@ -23,7 +23,7 @@ script/source = "extends Node3D
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_released(\"quit\"):
 		get_tree().quit()
 "
@@ -42,11 +42,14 @@ sky_material = SubResource("PanoramaSkyMaterial_272bh")
 [sub_resource type="Environment" id="Environment_kek77"]
 background_mode = 2
 sky = SubResource("Sky_5vw27")
+fog_sky_affect = 0.825
+volumetric_fog_enabled = true
+volumetric_fog_length = 18.29
 
 [node name="main" type="Node3D"]
 script = SubResource("GDScript_7mycd")
 
-[node name="Camera" parent="." instance=ExtResource("1_lquwl")]
+[node name="Camera" parent="." instance=ExtResource("1_2cqfq")]
 target_node = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("2_7mycd")]
@@ -78,7 +81,6 @@ metadata/_custom_type_script = "uid://bqpew6g2egkru"
 [node name="grass" type="Node3D" parent="HTerrain"]
 script = ExtResource("10_w48qg")
 texture = ExtResource("11_w48qg")
-view_distance = 500.0
 density = 1.2
 shader_params/u_globalmap_tint_bottom = null
 shader_params/u_globalmap_tint_top = null
@@ -109,7 +111,7 @@ instance_mesh = ExtResource("15_2cqfq")
 shader_params/u_globalmap_tint_bottom = 0.0
 shader_params/u_globalmap_tint_top = 0.0
 shader_params/u_bottom_ao = 1.0
-shader_params/u_instance_scale = Vector3(2, 2, 2)
+shader_params/u_instance_scale = Vector3(1.5, 1.5, 1.5)
 shader_params/u_roughness = 10.0
 metadata/_editor_icon = ExtResource("11_vivmo")
 

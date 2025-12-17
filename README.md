@@ -42,9 +42,11 @@ Learn how to import blender into godot: [https://www.youtube.com/watch?v=59vKbXK
 
 Get free heightmaps [https://www.motionforgepictures.com/height-maps/](https://www.motionforgepictures.com/height-maps/)
 
-Get Good PBR textures [https://ambientcg.com/](
+Get Good PBR textures [https://ambientcg.com/](https://ambientcg.com/)
 
 Other link are proprietary to ItGenio School
+
+TODO LIST: [https://www.notion.so](https://www.notion.so)
 
 # Info
 

@@ -4,7 +4,6 @@
 
 [node name="Camera" type="Marker3D"]
 script = ExtResource("1_rsmhi")
-max_distance = 5.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)

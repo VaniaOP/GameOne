@@ -39,7 +39,7 @@ func upd_detector():
 func _input(e):
 	if e is InputEventMouseMotion:
 		rotation.y -= e.relative.x * 0.01
-		rotation.x = clamp(rotation.x - e.relative.y * 0.01, -1, 0.2)
+		rotation.x = clamp(rotation.x - e.relative.y * 0.01, -1, 0.5)
 	if e is InputEventMouseButton:
 		if not disable_dist_change:
 			if e.button_index == 5:

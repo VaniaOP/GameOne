@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
 #const ROT_SPEED = 0.05
-const GRAVITY = -PI
-const SPEED = 1.2
+const GRAVITY = -20
+const SPEED = 1.3
 
 var state = ''
 var anim = ''
@@ -15,10 +15,10 @@ func _ready():
 	Global.player = self
 	S('Idle', 'Idle')
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	#Set velocity to zero
-	velocity = Vector3.ZERO
 	if is_on_floor():
+		velocity = Vector3.ZERO
 		if move_speed:
 			#add run and crouch
 			#may not be the best approach, but it works
@@ -36,24 +36,33 @@ func _physics_process(_delta):
 			S('Idle', 'Idle')
 		if Input.is_action_just_pressed("space"):
 			S('Jump', 'Jump')
-			velocity.y += 100
+			velocity.y = 9
 	else:
-		velocity.y += GRAVITY
+		velocity.y += GRAVITY*delta
 	move_and_slide()
 
 func S(s, a):
 	if s && s != state:
 		state = s 
 	if a && a != anim:
-		$AnimationPlayer.play(a, 2)
+		$AnimationPlayer.play(a, 0.5)
 
 func control(y):
+	#Pretty stupid, but it works XD
 	if Input.is_action_pressed('ui_up'):
 		move_speed = -1
 		rot_y = 0
+		if Input.is_action_pressed('ui_left'):
+			rot_y = PI/4
+		elif Input.is_action_pressed('ui_right'):
+			rot_y = - PI/4
 	elif Input.is_action_pressed('ui_down'):
 		move_speed = -1
 		rot_y = -PI
+		if Input.is_action_pressed('ui_left'):
+			rot_y = (3*PI)/4
+		elif Input.is_action_pressed('ui_right'):
+			rot_y = - (3*PI)/4
 	elif Input.is_action_pressed('ui_left'):
 		move_speed = -1
 		rot_y = PI/2
@@ -67,7 +76,6 @@ func control(y):
 			transform.basis.get_rotation_quaternion().slerp(
 				Basis(Vector3.UP, y + rot_y).get_rotation_quaternion(), 5*get_process_delta_time()
 			)
-		) 
+		)
 
-#TODO: fix jump; see if move code is ok
-#PROBLEM: The jumping animation starts, but is overwritten to idle when space is not pressed
+#TODO better control

@@ -16,6 +16,8 @@ func _ready():
 	S('Idle', 'Idle')
 
 func _physics_process(delta):
+	#SimpleGrass
+	SimpleGrass.set_player_position(global_position)
 	#Set velocity to zero
 	if is_on_floor():
 		velocity = Vector3.ZERO
@@ -36,7 +38,7 @@ func _physics_process(delta):
 			S('Idle', 'Idle')
 		if Input.is_action_just_pressed("space"):
 			S('Jump', 'Jump')
-			velocity.y = 9
+			velocity.y = 8
 	else:
 		velocity.y += GRAVITY*delta
 	move_and_slide()

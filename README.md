@@ -14,9 +14,10 @@ Game, where you can run in a forest, collect herbs, shrooms and leafs. Explore C
 * Collect Items
 * Set up Camp
 * Inventory
-* Craft Potions
+* Cook Food
 * Start fire in camp
 * Sleep
+* Hunting
 
 # Technical
 
@@ -28,6 +29,11 @@ Game, where you can run in a forest, collect herbs, shrooms and leafs. Explore C
 * Pause / Settings
 * Controller / Keyboard support
 * Linux native
+
+# TODO
+
+* better control
+* metter map boundries
 
 # Reference Games
 

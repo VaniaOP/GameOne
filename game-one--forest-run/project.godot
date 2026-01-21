@@ -41,7 +41,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*res://global.gd"
+GScript="*res://global.gd"
 SimpleGrass="*res://addons/simplegrasstextured/singleton.tscn"
 
 [editor_plugins]

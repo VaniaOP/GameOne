@@ -18,7 +18,7 @@ var is_control = false
 var disable_dist_change = false
 
 func _ready():
-	Global.camera = self
+	GScript.camera = self
 	target = get_node(target_node)
 	camera = $Camera3D
 	is_control = target.has_method('control')

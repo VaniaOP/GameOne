@@ -12,7 +12,8 @@ var rot_y = 0
 var disable_dist_change = false
 
 func _ready():
-	Global.player = self
+	GScript.player = self
+	GScript.HP=100
 	S('Idle', 'Idle')
 
 func _physics_process(delta):
@@ -41,6 +42,10 @@ func _physics_process(delta):
 			velocity.y = 8
 	else:
 		velocity.y += GRAVITY*delta
+	if GScript.HP == 0:
+		print("dead")
+		#player died
+		#have to script
 	move_and_slide()
 
 func S(s, a):
@@ -79,5 +84,6 @@ func control(y):
 				Basis(Vector3.UP, y + rot_y).get_rotation_quaternion(), 5*get_process_delta_time()
 			)
 		)
+
 
 #TODO better control

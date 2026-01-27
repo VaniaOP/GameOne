@@ -1,4 +1,4 @@
-[gd_resource type="ArrayMesh" load_steps=4 format=4 uid="uid://puge3qx5etfi"]
+[gd_resource type="ArrayMesh" format=4 uid="uid://puge3qx5etfi"]
 
 [ext_resource type="Texture2D" uid="uid://clohqqcuejvg1" path="res://models/spruce/source/spruce_26e72b74f5a97b0edf8d6f980e9d8863_upscayl_1x_realesrgan-x4plus.png" id="1_ob7lq"]
 

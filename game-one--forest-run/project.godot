@@ -32,11 +32,15 @@ Shortcuts/density_decrement=Object(Shortcut,"resource_local_to_scene":false,"res
 ],"script":null)
 
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Game One: Forest Run"
 run/main_scene="uid://1krn2rji5b2d"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]

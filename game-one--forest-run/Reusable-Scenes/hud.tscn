@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgptjpujvnpjl"]
+[gd_scene format=3 uid="uid://dgptjpujvnpjl"]
 
 [ext_resource type="Script" uid="uid://bngeog4wrsfjn" path="res://Scripts/hud.gd" id="1_cx5ao"]
 
@@ -10,10 +10,10 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1818677993]
 script = ExtResource("1_cx5ao")
 
-[node name="HealthBar" type="ProgressBar" parent="."]
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=614191774]
 offset_left = 59.0
 offset_top = 2.0
 offset_right = 250.0
@@ -22,7 +22,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_re8vk")
 step = 1.0
 value = 100.0
 
-[node name="health" type="Label" parent="."]
+[node name="health" type="Label" parent="." unique_id=1610644740]
 offset_left = 3.0
 offset_top = 2.0
 offset_right = 55.0

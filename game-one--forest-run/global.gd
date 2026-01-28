@@ -4,6 +4,8 @@ var player
 var camera
 var HP
 
+var DAYTIME
+
 
 #global damage function
 #call GScript.hurt() to deal damage

@@ -110,14 +110,14 @@ uniform float cirrus_mask_treshold: hint_range(0.0, 1.0) = .6;
 uniform float cirrus_mask_feather: hint_range(0.0, 1.0) = .4;
 uniform float cirrus_opacity: hint_range(0.0, 1.0) = 0.2;
 
-group_uniforms Rainbow;
-uniform bool use_rainbow = false;
-uniform bool behind_clouds = false;
-uniform sampler2D rainbow_gradient: hint_default_white, filter_linear;
-uniform float rainbow_width = .05;
-uniform float rainbow_offset = .65;
-uniform float rainbow_opacity: hint_range(0.0, 1.0) = .1;
-uniform bool double_rainbow = true;
+//group_uniforms Rainbow;
+//uniform bool use_rainbow = false;
+//uniform bool behind_clouds = false;
+//uniform sampler2D rainbow_gradient: hint_default_white, filter_linear;
+//uniform float rainbow_width = .05;
+//uniform float rainbow_offset = .65;
+//uniform float rainbow_opacity: hint_range(0.0, 1.0) = .1;
+//uniform bool double_rainbow = true;
 
 
 #define saturate(a) clamp(a, 0.0, 1.0)
@@ -562,41 +562,41 @@ void sky() {
 		COLOR = mix(COLOR, clouds.rgb, clouds.a);
 
 		// Rainbows
-		if (use_rainbow) {
-			// Main rainbow
-			{
-				float lower_bound = rainbow_offset - rainbow_width;
-				float upper_bound = rainbow_offset + rainbow_width;
-				float lower_mask = smoothstep(lower_bound, lower_bound + .02, EYEDIR.x);
-				float upper_mask = smoothstep(upper_bound, upper_bound - .02, EYEDIR.x);
-				COLOR += texture(
-						rainbow_gradient,
-						vec2(smoothstep(lower_bound, upper_bound, EYEDIR.x), 0.0)
-					).rgb
-					* lower_mask
-					* upper_mask
-					* rainbow_opacity
-					* transmittance
-					* (behind_clouds ? (1.0 - clouds.a) : 1.0);
-			}
-
-			// Double rainbow
-			if (double_rainbow) {
-				float lower_bound = rainbow_offset * 0.9 - rainbow_width * 1.5;
-				float upper_bound = rainbow_offset * 0.9 + rainbow_width * 1.5;
-				float lower_mask = smoothstep(lower_bound, lower_bound + .02, EYEDIR.x);
-				float upper_mask = smoothstep(upper_bound, upper_bound - .02, EYEDIR.x);
-				COLOR += texture(
-						rainbow_gradient,
-						vec2(smoothstep(lower_bound, upper_bound, EYEDIR.x), 0.0)
-					).rgb
-					* lower_mask
-					* upper_mask
-					* rainbow_opacity * .15
-					* transmittance
-					* (behind_clouds ? (1.0 - clouds.a) : 1.0);
-			}
-		}
+		//if (use_rainbow) {
+			//// Main rainbow
+			//{
+				//float lower_bound = rainbow_offset - rainbow_width;
+				//float upper_bound = rainbow_offset + rainbow_width;
+				//float lower_mask = smoothstep(lower_bound, lower_bound + .02, EYEDIR.x);
+				//float upper_mask = smoothstep(upper_bound, upper_bound - .02, EYEDIR.x);
+				//COLOR += texture(
+						//rainbow_gradient,
+						//vec2(smoothstep(lower_bound, upper_bound, EYEDIR.x), 0.0)
+					//).rgb
+					//* lower_mask
+					//* upper_mask
+					//* rainbow_opacity
+					//* transmittance
+					//* (behind_clouds ? (1.0 - clouds.a) : 1.0);
+			//}
+//
+			//// Double rainbow
+			//if (double_rainbow) {
+				//float lower_bound = rainbow_offset * 0.9 - rainbow_width * 1.5;
+				//float upper_bound = rainbow_offset * 0.9 + rainbow_width * 1.5;
+				//float lower_mask = smoothstep(lower_bound, lower_bound + .02, EYEDIR.x);
+				//float upper_mask = smoothstep(upper_bound, upper_bound - .02, EYEDIR.x);
+				//COLOR += texture(
+						//rainbow_gradient,
+						//vec2(smoothstep(lower_bound, upper_bound, EYEDIR.x), 0.0)
+					//).rgb
+					//* lower_mask
+					//* upper_mask
+					//* rainbow_opacity * .15
+					//* transmittance
+					//* (behind_clouds ? (1.0 - clouds.a) : 1.0);
+			//}
+		//}
 
 		if (use_debanding) {
 			COLOR += (rand(SKY_COORDS) - 0.5) * 0.001;

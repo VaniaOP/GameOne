@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://22jq2ny5boyj"]
+
+[ext_resource type="Script" uid="uid://hy1p6rjybasg" path="res://Scripts/sky.gd" id="1_ag4jm"]
+
+[node name="Sky" type="Node" unique_id=1633142508]
+script = ExtResource("1_ag4jm")
+time_of_day = 0.737

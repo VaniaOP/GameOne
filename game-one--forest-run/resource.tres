@@ -1,0 +1,14 @@
+[gd_resource type="Resource" format=3 uid="uid://dk3lhqk7bhyp6"]
+
+[ext_resource type="Script" uid="uid://vd35vycdvlv0" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="1_3jam7"]
+[ext_resource type="Texture2D" uid="uid://dnoq7aj2lc2mb" path="res://resource_slot0_albedo_bump.png" id="2_3jam7"]
+[ext_resource type="Texture2D" uid="uid://diobdwc8jmjxa" path="res://resource_slot1_albedo_bump.png" id="3_yitwj"]
+[ext_resource type="Texture2D" uid="uid://c60lofkbvngy6" path="res://resource_slot2_albedo_bump.png" id="4_5mhan"]
+[ext_resource type="Texture2D" uid="uid://c5kdw7h0j07ah" path="res://resource_slot0_normal_roughness.png" id="5_kh6pk"]
+[ext_resource type="Texture2D" uid="uid://cbkhmx0kkjg6g" path="res://resource_slot1_normal_roughness.png" id="6_6bokx"]
+[ext_resource type="Texture2D" uid="uid://calxtjsjrvxm4" path="res://resource_slot2_normal_roughness.png" id="7_srv2i"]
+
+[resource]
+script = ExtResource("1_3jam7")
+mode = 0
+textures = [[ExtResource("2_3jam7"), ExtResource("3_yitwj"), ExtResource("4_5mhan")], [ExtResource("5_kh6pk"), ExtResource("6_6bokx"), ExtResource("7_srv2i")]]

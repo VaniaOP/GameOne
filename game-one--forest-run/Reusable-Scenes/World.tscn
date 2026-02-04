@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://c5jv1nwwmrddf"]
+
+[ext_resource type="Script" uid="uid://dhk56505gireo" path="res://Scripts/world.gd" id="1_kqs1s"]
+[ext_resource type="Material" uid="uid://7wuop4abysij" path="res://materials/SkyMaterial.tres" id="2_d1c63"]
+[ext_resource type="PackedScene" uid="uid://22jq2ny5boyj" path="res://Reusable-Scenes/Sky.tscn" id="3_c2he0"]
+
+[sub_resource type="Sky" id="Sky_kqs1s"]
+sky_material = ExtResource("2_d1c63")
+process_mode = 2
+
+[sub_resource type="Environment" id="Environment_1lgw5"]
+background_mode = 2
+sky = SubResource("Sky_kqs1s")
+ambient_light_color = Color(0.933594, 0.846958, 0.800123, 1)
+ambient_light_sky_contribution = 0.933077
+ambient_light_energy = 0.0
+tonemap_mode = 3
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.001
+
+[node name="World" type="Node3D" unique_id=383108648]
+script = ExtResource("1_kqs1s")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1482574422]
+environment = SubResource("Environment_1lgw5")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=980743604]
+transform = Transform3D(1, 0, 0, 0, 0.9999889, -0.0049032667, 0, 0.0049032667, 0.9999889, 0, 0, 0)
+light_color = Color(1, 0.42451906, 0, 1)
+light_energy = 0.9914196
+light_angular_distance = 3.0
+light_specular = 0.0
+shadow_enabled = true
+
+[node name="Moon" type="DirectionalLight3D" parent="." unique_id=2036042376]
+transform = Transform3D(0.79968464, 0.4200919, 0.42898396, 0, -0.71447265, 0.69966334, 0.60042024, -0.5595099, -0.57135296, 0, 0, 0)
+light_color = Color(0.6052743, 0.6052743, 0.6052743, 1)
+light_energy = 0.1
+light_volumetric_fog_energy = 6.0
+light_angular_distance = 21.1
+light_specular = 0.0
+shadow_enabled = true
+
+[node name="Sky" parent="." unique_id=1633142508 node_paths=PackedStringArray("environment", "sun") instance=ExtResource("3_c2he0")]
+time_of_day = 1.7651813722222423
+environment = NodePath("../WorldEnvironment")
+sun = NodePath("../Sun")

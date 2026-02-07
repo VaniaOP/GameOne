@@ -33,7 +33,14 @@ func _on_secret_scene_body_entered(body: Node3D) -> void:
 	# secret forest scene
 
 
-func _on_daynight_animation_changed(old_name: StringName, new_name: StringName) -> void:
-	c_cov = randi_range(0, 1)
-	c_smo = randi_range(0, 1)
+
+
+
+
+#should run on every loop
+#well it doesnt
+func _on_daynight_animation_started(anim_name: StringName) -> void:
+	print('new anim')
+	c_cov = randi_range(0.2, 0.8)
+	c_smo = randi_range(0.2, 0.8)
 	$Moon.rotation = Vector3(m_x, m_y, 0)

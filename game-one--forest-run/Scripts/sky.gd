@@ -44,7 +44,7 @@ func kelvin_to_rgb(temp_kelvin: float) -> Color:
 	return Color(red / 255.0, green / 255.0, blue / 255.0)
 
 
-func _process(delta: float) -> void:	
+func _process(_delta: float) -> void:	
 	if not sun: pass
 	sky_material.set_shader_parameter("stars_rotation", sun.global_basis)
 

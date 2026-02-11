@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://nqpslx1t6fv4"]
+[gd_scene format=4 uid="uid://nqpslx1t6fv4"]
 
 [ext_resource type="Script" uid="uid://dxxo8madus57v" path="res://Scripts/player.gd" id="1_e80uo"]
 [ext_resource type="Texture2D" uid="uid://dej4n5jg3gedw" path="res://Animation/Animations_Ch01_1001_Diffuse.png" id="1_kne1u"]
@@ -10,7 +10,7 @@ resource_name = "Ch01_body"
 transparency = 4
 cull_mode = 2
 albedo_texture = ExtResource("1_kne1u")
-metallic = 0.5
+metallic_specular = 0.0
 metallic_texture = ExtResource("2_e80uo")
 metallic_texture_channel = 2
 roughness_texture = ExtResource("2_e80uo")
@@ -242,7 +242,7 @@ resource_name = "Ch01_hair"
 transparency = 4
 cull_mode = 2
 albedo_texture = ExtResource("1_kne1u")
-metallic = 0.5
+metallic_specular = 0.0
 roughness = 0.5527864
 normal_enabled = true
 normal_texture = ExtResource("3_cxr5p")
@@ -4658,14 +4658,14 @@ height = 1.7508423
 radial_segments = 8
 rings = 4
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" unique_id=509031892]
 collision_layer = 2
 script = ExtResource("1_e80uo")
 
-[node name="Armature" type="Node3D" parent="."]
+[node name="Armature" type="Node3D" parent="." unique_id=550161725]
 transform = Transform3D(-0.01, -8.7422775e-10, 3.821371e-17, 0, -4.3711387e-10, -0.01, 8.7422775e-10, -0.01, 4.3711387e-10, 0, 0, 0)
 
-[node name="Skeleton3D" type="Skeleton3D" parent="Armature"]
+[node name="Skeleton3D" type="Skeleton3D" parent="Armature" unique_id=1102872083]
 bones/0/name = "mixamorig12_Hips"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 2.6630447, -99.163055)
@@ -5122,36 +5122,34 @@ bones/64/position = Vector3(1.7881393e-06, 7.753367, -2.3841858e-07)
 bones/64/rotation = Quaternion(8.381905e-09, -3.490132e-07, -2.2002496e-08, 1)
 bones/64/scale = Vector3(1, 0.9999999, 0.9999998)
 
-[node name="Ch01_Body" type="MeshInstance3D" parent="Armature/Skeleton3D"]
+[node name="Ch01_Body" type="MeshInstance3D" parent="Armature/Skeleton3D" unique_id=782685898]
 mesh = SubResource("ArrayMesh_18mrq")
 skin = SubResource("Skin_xahp5")
 
-[node name="Ch01_Eyelashes" type="MeshInstance3D" parent="Armature/Skeleton3D"]
+[node name="Ch01_Eyelashes" type="MeshInstance3D" parent="Armature/Skeleton3D" unique_id=164737948]
 mesh = SubResource("ArrayMesh_x4146")
 skin = SubResource("Skin_xahp5")
 
-[node name="Ch01_Pants" type="MeshInstance3D" parent="Armature/Skeleton3D"]
+[node name="Ch01_Pants" type="MeshInstance3D" parent="Armature/Skeleton3D" unique_id=565897046]
 mesh = SubResource("ArrayMesh_v7pce")
 skin = SubResource("Skin_xahp5")
 
-[node name="Ch01_Shirt" type="MeshInstance3D" parent="Armature/Skeleton3D"]
+[node name="Ch01_Shirt" type="MeshInstance3D" parent="Armature/Skeleton3D" unique_id=354316831]
 mesh = SubResource("ArrayMesh_rg6xb")
 skin = SubResource("Skin_xahp5")
 
-[node name="Ch01_Sneakers" type="MeshInstance3D" parent="Armature/Skeleton3D"]
+[node name="Ch01_Sneakers" type="MeshInstance3D" parent="Armature/Skeleton3D" unique_id=720177646]
 mesh = SubResource("ArrayMesh_eji35")
 skin = SubResource("Skin_xahp5")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_esa15")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=494602583]
+libraries/ = SubResource("AnimationLibrary_esa15")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=259393195]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.032, 0.87653, 0)
 shape = SubResource("CapsuleShape3D_e80uo")
 
-[node name="grasscollider" type="MeshInstance3D" parent="."]
+[node name="grasscollider" type="MeshInstance3D" parent="." unique_id=540262531]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 layers = 65536
 mesh = SubResource("SphereMesh_egdqy")

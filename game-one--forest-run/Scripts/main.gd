@@ -1,46 +1,59 @@
 extends Node3D
 @export var daytime:String = "day"
 
-var clouds = preload("res://materials/SkyMaterial.tres")
+@export var clouds: ShaderMaterial = preload("res://materials/SkyMaterial.tres")
 
 var c_cov:float
 var c_smo:float
 
-var m_x:float
-var m_y:float
-
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	SimpleGrass.set_interactive(true)
+	print('anim start')
+	change_clouds("normal")
 	$Daynight.play("cycler")
-	c_cov = randi_range(0, 1)
-	c_smo = randi_range(0, 1)
-
-func _process(delta: float) -> void:
+	
+func _process(_delta: float) -> void:
 	if Input.is_action_just_released("quit"):
 		get_tree().quit()
 	GScript.DAYTIME = daytime
 
-	c_cov += delta * 10
-	c_smo += delta *10
-	clouds.set_shader_parameter("shader_parameter/coverage", c_cov)
-	clouds.set_shader_parameter("shader_parameter/cloud_smoothness", c_smo)
+	if daytime == 'night':
+		change_clouds()
+	
 
 
 
-func _on_secret_scene_body_entered(body: Node3D) -> void:
+func _on_secret_scene_body_entered(_body: Node3D) -> void:
 	if daytime != "night": return
 	# secret forest scene
+	pass
 
-
-
-
-
-
-#should run on every loop
-#well it doesnt
-func _on_daynight_animation_started(anim_name: StringName) -> void:
-	print('new anim')
-	c_cov = randi_range(0.2, 0.8)
-	c_smo = randi_range(0.2, 0.8)
-	$Moon.rotation = Vector3(m_x, m_y, 0)
+func change_clouds(select:String=""):
+	var weather:String
+	if not select:
+		var weather_list = ['normal', 'cloudy', 'rainy', 'thunderstorm', 'clear']
+		weather = weather_list.pick_random()
+	else:
+		weather = select
+	
+	match weather:
+		'normal':
+			c_cov = 0.286
+			c_smo = 0.045
+		'cloudy':
+			c_cov = 0.469
+			c_smo = 0.095
+		'rainy':
+			c_cov = 0.586
+			c_smo = 0.041
+		'thunderstorm':
+			c_cov = 0.586
+			c_smo = 0.041
+		'clear':
+			c_cov = 0.188
+			c_smo = 0.035
+	print(clouds.get_shader_parameter("coverage"))
+	clouds.set_shader_parameter("coverage", c_cov)
+	clouds.set_shader_parameter("cloud_smoothness", c_smo)
+	print(clouds.get_shader_parameter("coverage"))

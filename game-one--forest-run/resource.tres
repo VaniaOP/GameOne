@@ -1,12 +1,12 @@
 [gd_resource type="Resource" format=3 uid="uid://dk3lhqk7bhyp6"]
 
 [ext_resource type="Script" uid="uid://vd35vycdvlv0" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="1_3jam7"]
-[ext_resource type="Texture2D" uid="uid://dnoq7aj2lc2mb" path="res://resource_slot0_albedo_bump.png" id="2_3jam7"]
-[ext_resource type="Texture2D" uid="uid://diobdwc8jmjxa" path="res://resource_slot1_albedo_bump.png" id="3_yitwj"]
-[ext_resource type="Texture2D" uid="uid://c60lofkbvngy6" path="res://resource_slot2_albedo_bump.png" id="4_5mhan"]
-[ext_resource type="Texture2D" uid="uid://c5kdw7h0j07ah" path="res://resource_slot0_normal_roughness.png" id="5_kh6pk"]
-[ext_resource type="Texture2D" uid="uid://cbkhmx0kkjg6g" path="res://resource_slot1_normal_roughness.png" id="6_6bokx"]
-[ext_resource type="Texture2D" uid="uid://calxtjsjrvxm4" path="res://resource_slot2_normal_roughness.png" id="7_srv2i"]
+[ext_resource type="Texture2D" uid="uid://lvujh6mmllbc" path="res://textures/import/resource_slot0_albedo_bump.png" id="2_3jam7"]
+[ext_resource type="Texture2D" uid="uid://dj7oieskrdlen" path="res://textures/import/resource_slot1_albedo_bump.png" id="3_yitwj"]
+[ext_resource type="Texture2D" uid="uid://dmcnrclgsy3s3" path="res://textures/import/resource_slot2_albedo_bump.png" id="4_5mhan"]
+[ext_resource type="Texture2D" uid="uid://d0krgx6jvam4b" path="res://textures/import/resource_slot0_normal_roughness.png" id="5_kh6pk"]
+[ext_resource type="Texture2D" uid="uid://tkmxu2d11s8j" path="res://textures/import/resource_slot1_normal_roughness.png" id="6_6bokx"]
+[ext_resource type="Texture2D" uid="uid://3giplnrsyt0y" path="res://textures/import/resource_slot2_normal_roughness.png" id="7_srv2i"]
 
 [resource]
 script = ExtResource("1_3jam7")

@@ -44,15 +44,19 @@ Game, where you can run in a forest, collect herbs, shrooms and leafs. Explore C
 
 Get your characters and animations: [mixamo](https://www.mixamo.com/#/)
 
+Terrain plugin: [https://github.com/Zylann/godot_heightmap_plugin](https://github.com/Zylann/godot_heightmap_plugin)
+
 Learn how to import blender into godot: [https://www.youtube.com/watch?v=59vKbXKuaNI](https://www.youtube.com/watch?v=59vKbXKuaNI)
 
-Get free heightmaps [https://www.motionforgepictures.com/height-maps/](https://www.motionforgepictures.com/height-maps/)
+Get free heightmaps: [https://www.motionforgepictures.com/height-maps/](https://www.motionforgepictures.com/height-maps/)
 
-Get Good PBR textures [https://ambientcg.com/](https://ambientcg.com/)
+Get Good PBR textures: [https://ambientcg.com/](https://ambientcg.com/)
 
-Other link are proprietary to ItGenio School
+Sky shader source: [https://github.com/AndreySoldatov/Godot-Sky-Plus-Plus](https://github.com/AndreySoldatov/Godot-Sky-Plus-Plus)
 
 TODO LIST: [https://www.notion.so](https://www.notion.so)
+
+Other link are proprietary to ItGenio School
 
 # Info
 

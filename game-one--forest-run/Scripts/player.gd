@@ -17,8 +17,6 @@ func _ready():
 	S('Idle', 'Idle')
 
 func _physics_process(delta):
-	#SimpleGrass
-	SimpleGrass.set_player_position(global_position)
 	#Set velocity to zero
 	if is_on_floor():
 		velocity = Vector3.ZERO

@@ -1,13 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1h4657ywlh4w"]
+[gd_scene format=3 uid="uid://d1h4657ywlh4w"]
 
 [ext_resource type="Script" uid="uid://cqbl5mi0mnfyj" path="res://Scripts/camera.gd" id="1_rsmhi"]
 
-[node name="Camera" type="Marker3D"]
+[sub_resource type="SphereMesh" id="SphereMesh_rsmhi"]
+radius = 0.7
+height = 1.4
+radial_segments = 8
+rings = 4
+
+[node name="Camera" type="Marker3D" unique_id=411789044]
 script = ExtResource("1_rsmhi")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=546369196]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 cull_mask = 983039
 
-[node name="detector" type="RayCast3D" parent="."]
+[node name="detector" type="RayCast3D" parent="." unique_id=1083822936]
 target_position = Vector3(0, 0, 5)
+
+[node name="grasscollider" type="MeshInstance3D" parent="." unique_id=736896210]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22000408, 4.5390687)
+layers = 65536
+mesh = SubResource("SphereMesh_rsmhi")

@@ -44,6 +44,8 @@ Game, where you can run in a forest, collect herbs, shrooms and leafs. Explore C
 
 Get your characters and animations: [mixamo](https://www.mixamo.com/#/)
 
+Simple Grass: [https://github.com/IcterusGames/SimpleGrassTextured](https://github.com/IcterusGames/SimpleGrassTextured)
+
 Terrain plugin: [https://github.com/Zylann/godot_heightmap_plugin](https://github.com/Zylann/godot_heightmap_plugin)
 
 Learn how to import blender into godot: [https://www.youtube.com/watch?v=59vKbXKuaNI](https://www.youtube.com/watch?v=59vKbXKuaNI)

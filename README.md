@@ -4,13 +4,13 @@ Game, where you can run in a forest, collect herbs, shrooms and leafs. Explore C
 
 # REQ
 
-* run 
-* walk
+> * run 
+> * walk
 * sit
 * crouch
 * attack
 * eat
-* jump
+> * jump
 * Collect Items
 * Set up Camp
 * Inventory
@@ -21,8 +21,8 @@ Game, where you can run in a forest, collect herbs, shrooms and leafs. Explore C
 
 # Technical
 
-* 3d
-* Free camera
+> * 3d
+> * Free camera
 > * Day/Night cycle
 * Weather
 * Character Switch (?)

@@ -9,7 +9,7 @@ var c_smo:float
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	SimpleGrass.set_interactive(true)
-	print('anim start')
+	daytime="day"
 	change_clouds("normal")
 	$Daynight.play("cycler")
 	
@@ -31,11 +31,14 @@ func _on_secret_scene_body_entered(_body: Node3D) -> void:
 
 func change_clouds(select:String=""):
 	var weather:String
+	var weather_list = ['normal', 'cloudy', 'rainy', 'thunderstorm', 'clear']
 	if not select:
-		var weather_list = ['normal', 'cloudy', 'rainy', 'thunderstorm', 'clear']
 		weather = weather_list.pick_random()
+		print(weather)
 	else:
+		if not select in weather_list: return
 		weather = select
+		print(select)
 	
 	match weather:
 		'normal':
@@ -53,7 +56,5 @@ func change_clouds(select:String=""):
 		'clear':
 			c_cov = 0.188
 			c_smo = 0.035
-	print(clouds.get_shader_parameter("coverage"))
 	clouds.set_shader_parameter("coverage", c_cov)
 	clouds.set_shader_parameter("cloud_smoothness", c_smo)
-	print(clouds.get_shader_parameter("coverage"))

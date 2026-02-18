@@ -4659,7 +4659,7 @@ radial_segments = 8
 rings = 4
 
 [node name="Player" type="CharacterBody3D" unique_id=509031892]
-collision_layer = 2
+collision_layer = 3
 script = ExtResource("1_e80uo")
 
 [node name="Armature" type="Node3D" parent="." unique_id=550161725]

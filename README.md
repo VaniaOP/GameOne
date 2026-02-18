@@ -23,7 +23,7 @@ Game, where you can run in a forest, collect herbs, shrooms and leafs. Explore C
 
 * 3d
 * Free camera
-* Day/Night cycle
+* > Day/Night cycle
 * Weather
 * Character Switch (?)
 * Pause / Settings

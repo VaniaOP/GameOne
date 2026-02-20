@@ -48,6 +48,10 @@ config/icon="res://icon.svg"
 GScript="*res://global.gd"
 SimpleGrass="*res://addons/simplegrasstextured/singleton.tscn"
 
+[display]
+
+window/size/mode=3
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/simplegrasstextured/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg")
@@ -171,7 +175,7 @@ sgt_wind_movement={
 }
 sgt_wind_strength={
 "type": "float",
-"value": 0.15
+"value": 0.24
 }
 sgt_wind_turbulence={
 "type": "float",

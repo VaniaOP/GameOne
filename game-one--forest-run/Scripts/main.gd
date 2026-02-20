@@ -6,13 +6,11 @@ extends Node3D
 var c_cov:float
 var c_smo:float
 
-var env
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	SimpleGrass.set_interactive(true)
 	daytime="day"
-	env = $WorldEnvironment.environment
 	change_clouds("normal")
 	$Daynight.play("cycler")
 		
@@ -31,15 +29,15 @@ func _on_secret_scene_body_entered(_body: Node3D) -> void:
 	pass
 
 func change_clouds(select:String=""):
+	var env:Environment
+	env = $WorldEnvironment.environment
 	var weather:String
 	var weather_list = ['normal', 'cloudy', 'rainy', 'thunderstorm', 'clear']
 	if not select:
 		weather = weather_list.pick_random()
-		print(weather)
 	else:
 		if not select in weather_list: return
 		weather = select
-		print(select)
 	$Player/GPUParticles3D.emitting = false
 	env.volumetric_fog_density = 0
 	match weather:

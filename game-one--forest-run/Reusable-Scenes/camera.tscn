@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://cqbl5mi0mnfyj" path="res://Scripts/camera.gd" id="1_rsmhi"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_rsmhi"]
-radius = 0.7
-height = 1.4
+radius = 2.0
+height = 4.0
 radial_segments = 8
 rings = 4
 
@@ -19,6 +19,6 @@ cull_mask = 983039
 target_position = Vector3(0, 0, 5)
 
 [node name="grasscollider" type="MeshInstance3D" parent="." unique_id=736896210]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22000408, 4.5390687)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22000408, 5.0664687)
 layers = 65536
 mesh = SubResource("SphereMesh_rsmhi")

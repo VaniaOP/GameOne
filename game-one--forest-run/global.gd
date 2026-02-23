@@ -6,6 +6,8 @@ var HP
 
 var DAYTIME
 
+var time
+
 
 #global damage function
 #call GScript.hurt() to deal damage

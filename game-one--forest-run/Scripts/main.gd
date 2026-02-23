@@ -13,6 +13,11 @@ func _ready() -> void:
 	daytime="day"
 	change_clouds("normal")
 	$Daynight.play("cycler")
+	#actual time
+	$weather_timer.wait_time = randi_range(300, 600)
+	#testing time
+	#$weather_timer.wait_time = randi_range(3, 6)
+	$weather_timer.start()
 		
 func _process(_delta: float) -> void:
 	SimpleGrass.set_player_position($Player.position)
@@ -22,6 +27,7 @@ func _process(_delta: float) -> void:
 	#used to check weather switch
 	if Input.is_action_just_released("change_weather"):
 		change_clouds()
+	GScript.time = $weather_timer.time_left
 	
 func _on_secret_scene_body_entered(_body: Node3D) -> void:
 	if daytime != "night": return
@@ -29,6 +35,7 @@ func _on_secret_scene_body_entered(_body: Node3D) -> void:
 	pass
 
 func change_clouds(select:String=""):
+	#need to make it gradual
 	var env:Environment
 	env = $WorldEnvironment.environment
 	var weather:String
@@ -62,3 +69,12 @@ func change_clouds(select:String=""):
 			c_smo = 0.035
 	clouds.set_shader_parameter("coverage", c_cov)
 	clouds.set_shader_parameter("cloud_smoothness", c_smo)
+
+
+func _on_weather_timer_timeout() -> void:
+	change_clouds()
+	#actual time
+	$weather_timer.wait_time = randi_range(300, 600)
+	#testing time
+	#$weather_timer.wait_time = randi_range(3, 6)
+	$weather_timer.start()

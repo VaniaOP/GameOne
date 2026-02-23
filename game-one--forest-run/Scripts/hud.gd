@@ -5,6 +5,7 @@ const MAX_HEALTH = 100
 
 func _process(_delta: float) -> void:
 	set_health_bar()
+	$"weather time".text = "Time: "+str(round(GScript.time))+"s"
 
 func _ready() -> void:
 	set_health_bar()

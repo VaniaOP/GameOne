@@ -35,3 +35,10 @@ text = "Health"
 offset_right = 70.0
 offset_bottom = 26.0
 text = "Time: 0s"
+
+[node name="fps" type="Label" parent="." unique_id=612367509]
+offset_left = 1.0
+offset_top = 27.0
+offset_right = 41.0
+offset_bottom = 50.0
+text = "fps"

@@ -2,10 +2,13 @@ extends CanvasLayer
 
 const MAX_HEALTH = 100
 
+var fps
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	set_health_bar()
 	$"weather time".text = "Time: "+str(round(GScript.time))+"s"
+	fps = round(1/delta)
+	$fps.text = "FPS: "+str(fps)
 
 func _ready() -> void:
 	set_health_bar()

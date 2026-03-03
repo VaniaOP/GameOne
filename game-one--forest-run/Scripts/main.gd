@@ -14,7 +14,7 @@ func _ready() -> void:
 	change_clouds("normal")
 	$Daynight.play("cycler")
 	#actual time
-	$weather_timer.wait_time = randi_range(300, 600)
+	$weather_timer.wait_time = randi_range(120, 300)
 	#testing time
 	#$weather_timer.wait_time = randi_range(3, 6)
 	$weather_timer.start()
@@ -46,7 +46,7 @@ func change_clouds(select:String=""):
 		if not select in weather_list: return
 		weather = select
 	$Player/GPUParticles3D.emitting = false
-	env.volumetric_fog_density = 0
+	env.volumetric_fog_density = 0.0015
 	match weather:
 		'normal':
 			c_cov = 0.286
@@ -74,7 +74,7 @@ func change_clouds(select:String=""):
 func _on_weather_timer_timeout() -> void:
 	change_clouds()
 	#actual time
-	$weather_timer.wait_time = randi_range(300, 600)
+	$weather_timer.wait_time = randi_range(120, 300)
 	#testing time
 	#$weather_timer.wait_time = randi_range(3, 6)
 	$weather_timer.start()

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" path="res://addons/zylann.hterrain/tools/util/dialog_fitter.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://dqgaomu3tr1ym" path="res://addons/zylann.hterrain/tools/texture_editor/set_editor/source_file_item_editor.tscn" id="3"]
-[ext_resource type="Script" uid="uid://cut6cbvn38dtv" path="res://addons/zylann.hterrain/tools/texture_editor/set_editor/texture_set_import_editor.gd" id="4"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/tools/texture_editor/set_editor/texture_set_import_editor.gd" id="4"]
 
 [node name="TextureSetImportEditor" type="AcceptDialog"]
 title = "Texture Set Import Tool"
@@ -97,6 +97,7 @@ size_flags_vertical = 3
 
 [node name="Label3" type="Label" parent="Import/HS/VB2"]
 modulate = Color(0.564706, 0.564706, 0.564706, 1)
+custom_minimum_size = Vector2(400, 80)
 layout_mode = 2
 text = "These images should remain accessible for import to work.
 Tip: you can place them in a folder with a `.gdignore` file, so they won't take space in your exported game."

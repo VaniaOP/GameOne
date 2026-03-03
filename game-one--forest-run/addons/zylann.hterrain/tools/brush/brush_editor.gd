@@ -13,12 +13,12 @@ const HT_BrushSettingsDialog = preload("./settings_dialog/brush_settings_dialog.
 
 
 @onready var _size_slider : Slider = $GridContainer/BrushSizeControl/Slider
-@onready var _size_value_label : Label = $GridContainer/BrushSizeControl/Label
+@onready var _size_spin_box : SpinBox = $GridContainer/BrushSizeControl/SpinBox
 #onready var _size_label = _params_container.get_node("BrushSizeLabel")
 
 @onready var _opacity_slider : Slider = $GridContainer/BrushOpacityControl/Slider
-@onready var _opacity_value_label : Label = $GridContainer/BrushOpacityControl/Label
 @onready var _opacity_control : Control = $GridContainer/BrushOpacityControl
+@onready var _opacity_spin_box : SpinBox = $GridContainer/BrushOpacityControl/SpinBox
 @onready var _opacity_label : Label = $GridContainer/BrushOpacityLabel
 
 @onready var _flatten_height_container : Control = $GridContainer/HB
@@ -58,7 +58,9 @@ func _set_visibility_of(node: Control, v: bool):
 
 func _ready():
 	_size_slider.value_changed.connect(_on_size_slider_value_changed)
+	_size_slider.share(_size_spin_box)
 	_opacity_slider.value_changed.connect(_on_opacity_slider_value_changed)
+	_opacity_slider.share(_opacity_spin_box)
 	_flatten_height_box.value_changed.connect(_on_flatten_height_box_value_changed)
 	_color_picker.color_changed.connect(_on_color_picker_color_changed)
 	_density_slider.value_changed.connect(_on_density_slider_changed)
@@ -66,6 +68,9 @@ func _ready():
 	_slope_limit_control.changed.connect(_on_slope_limit_changed)
 	
 	_size_slider.max_value = HT_Brush.MAX_SIZE_FOR_SLIDERS
+	_size_slider.min_value = HT_Brush.MIN_SIZE_FOR_SLIDERS
+	_opacity_slider.max_value = HT_Brush.MAX_OPACITY_FOR_SLIDERS
+	_opacity_slider.min_value = HT_Brush.MIN_OPACITY_FOR_SLIDERS
 	#if NativeFactory.is_native_available():
 	#	_size_slider.max_value = 200
 	#else:
@@ -102,6 +107,8 @@ func set_terrain_painter(terrain_painter: HT_TerrainPainter):
 		_terrain_painter.flatten_height_changed.disconnect(_on_flatten_height_changed)
 		_terrain_painter.get_brush().shapes_changed.disconnect(_on_brush_shapes_changed)
 		_terrain_painter.get_brush().shape_index_changed.disconnect(_on_brush_shape_index_changed)
+		_terrain_painter.get_brush().size_changed.disconnect(_on_brush_size_changed)
+		_terrain_painter.get_brush().opacity_changed.disconnect(_on_brush_opacity_changed)
 	
 	_terrain_painter = terrain_painter
 
@@ -136,6 +143,8 @@ func set_terrain_painter(terrain_painter: HT_TerrainPainter):
 		_terrain_painter.flatten_height_changed.connect(_on_flatten_height_changed)
 		brush.shapes_changed.connect(_on_brush_shapes_changed)
 		brush.shape_index_changed.connect(_on_brush_shape_index_changed)
+		brush.size_changed.connect(_on_brush_size_changed)
+		brush.opacity_changed.connect(_on_brush_opacity_changed)
 
 
 func _on_flatten_height_changed():
@@ -147,6 +156,14 @@ func _on_brush_shapes_changed():
 	_update_shape_preview()
 
 
+func _on_brush_size_changed(new_size):
+	_update_brush_size(new_size)
+
+
+func _on_brush_opacity_changed(new_opacity):
+	_update_brush_opacity(new_opacity)
+
+
 func _on_brush_shape_index_changed():
 	_update_shape_preview()
 
@@ -155,6 +172,16 @@ func _update_shape_preview():
 	var brush := _terrain_painter.get_brush()
 	var i := brush.get_shape_index()
 	_shape_texture_rect.texture = brush.get_shape(i)
+
+
+func _update_brush_size(new_size):
+	if _terrain_painter != null:
+		_size_slider.set_value_no_signal(new_size)
+
+
+func _update_brush_opacity(new_opacity):
+	if _terrain_painter != null:
+		_opacity_slider.set_value_no_signal(new_opacity * _opacity_slider.max_value)
 
 
 func set_display_mode(mode: int):
@@ -190,13 +217,11 @@ func set_display_mode(mode: int):
 func _on_size_slider_value_changed(v: float):
 	if _terrain_painter != null:
 		_terrain_painter.set_brush_size(int(v))
-	_size_value_label.text = str(v)
 
 
 func _on_opacity_slider_value_changed(v: float):
 	if _terrain_painter != null:
 		_terrain_painter.set_opacity(_opacity_slider.ratio)
-	_opacity_value_label.text = str(v)
 
 
 func _on_flatten_height_box_value_changed(v: float):

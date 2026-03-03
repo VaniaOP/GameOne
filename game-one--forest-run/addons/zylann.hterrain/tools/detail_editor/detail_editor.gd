@@ -17,13 +17,13 @@ signal detail_selected(index)
 # Emitted when the tool added or removed a detail map
 signal detail_list_changed
 
-@onready var _item_list : ItemList = $ItemList
-@onready var _confirmation_dialog : ConfirmationDialog = $ConfirmationDialog
+@onready var _item_list: ItemList = $ItemList
+@onready var _confirmation_dialog: ConfirmationDialog = $ConfirmationDialog
 
-var _terrain : HTerrain = null
+var _terrain: HTerrain = null
 var _dialog_target := -1
-var _undo_redo_manager : EditorUndoRedoManager
-var _image_cache : HT_ImageFileCache
+var _undo_redo_manager: EditorUndoRedoManager
+var _image_cache: HT_ImageFileCache
 var _logger = HT_Logger.get_for(self)
 
 
@@ -85,7 +85,7 @@ func _update_list():
 				# TODO Use fg version when available in Godot 3.1, I want to only highlight text
 				_item_list.set_item_custom_bg_color(i, Color(1.0, 0.2, 0.2, 0.3))
 				_item_list.set_item_tooltip(i, "This map isn't used by any layer. " \
-					+ "Add a HTerrainDetailLayer node as child of the terrain.")
+					+"Add a HTerrainDetailLayer node as child of the terrain.")
 
 
 func _on_Add_pressed():
@@ -109,7 +109,7 @@ func _add_layer():
 	assert(_terrain != null)
 	assert(_terrain.get_data() != null)
 	assert(_undo_redo_manager != null)
-	var terrain_data : HTerrainData = _terrain.get_data()
+	var terrain_data: HTerrainData = _terrain.get_data()
 
 	# First, create node and map image	
 	var node := HTerrainDetailLayer.new()
@@ -118,9 +118,14 @@ func _add_layer():
 	node.set_meta("_editor_icon", detail_layer_icon)
 	node.name = "HTerrainDetailLayer"
 	var map_index := terrain_data._edit_add_map(HTerrainData.CHANNEL_DETAIL)
-	var map_image := terrain_data.get_image(HTerrainData.CHANNEL_DETAIL)
+	var map_image := terrain_data.get_image(HTerrainData.CHANNEL_DETAIL, map_index)
 	var map_image_cache_id := _image_cache.save_image(map_image)
 	node.layer_index = map_index
+	
+	# var max_seed := 0
+	# for dl in _terrain.get_detail_layers():
+	# 	max_seed = maxi(dl.fixed_seed, max_seed)
+	# node.fixed_seed = max_seed + 1
 	
 	var undo_redo := _undo_redo_manager.get_history_undo_redo(
 		_undo_redo_manager.get_object_history_id(_terrain))
@@ -128,9 +133,9 @@ func _add_layer():
 	# Then, create an action
 	undo_redo.create_action("Add Detail Layer {0}".format([map_index]))
 	
-	undo_redo.add_do_method(terrain_data._edit_insert_map_from_image_cache.bind( 
+	undo_redo.add_do_method(terrain_data._edit_insert_map_from_image_cache.bind(
 		HTerrainData.CHANNEL_DETAIL, map_index, _image_cache, map_image_cache_id))
-	undo_redo.add_do_method(_terrain.add_child.bind(node))
+	undo_redo.add_do_method(_terrain.add_child.bind(node, true))
 	undo_redo.add_do_property(node, "owner", get_tree().edited_scene_root)
 	undo_redo.add_do_method(self._update_list)
 	undo_redo.add_do_reference(node)
@@ -156,7 +161,7 @@ func _add_layer():
 
 
 func _remove_layer(map_index: int):
-	var terrain_data : HTerrainData = _terrain.get_data()
+	var terrain_data: HTerrainData = _terrain.get_data()
 	
 	# First, cache image data
 	var image := terrain_data.get_image(HTerrainData.CHANNEL_DETAIL, map_index)
@@ -195,6 +200,3 @@ func _remove_layer(map_index: int):
 
 func _on_ItemList_item_selected(index):
 	detail_selected.emit(index)
-
-
-	

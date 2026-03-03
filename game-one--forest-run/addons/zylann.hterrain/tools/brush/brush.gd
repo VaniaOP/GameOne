@@ -10,12 +10,17 @@ const HT_Painter = preload("./painter.gd")
 
 const SHAPES_DIR = "addons/zylann.hterrain/tools/brush/shapes"
 const DEFAULT_BRUSH_TEXTURE_PATH = SHAPES_DIR + "/round2.exr"
+
 # Reasonable size for sliders to be usable
+const MIN_SIZE_FOR_SLIDERS = 2
 const MAX_SIZE_FOR_SLIDERS = 500
+const MIN_OPACITY_FOR_SLIDERS = 0
+const MAX_OPACITY_FOR_SLIDERS = 100
 # Absolute size limit. Terrains can't be larger than that, and it will be very slow to paint
 const MAX_SIZE = 4000
 
 signal size_changed(new_size)
+signal opacity_changed(new_opacity)
 signal shapes_changed
 signal shape_index_changed
 
@@ -50,7 +55,11 @@ func get_size() -> int:
 
 
 func set_opacity(opacity: float):
-	_opacity = clampf(opacity, 0.0, 1.0)
+	var new_opacity := clampf(opacity, 0.0, 1.0)
+
+	if new_opacity != _opacity:
+		_opacity = new_opacity
+		opacity_changed.emit(_opacity)
 
 
 func get_opacity() -> float:
@@ -147,7 +156,7 @@ func is_shape_cycling_enabled() -> bool:
 
 static func load_shape_from_image_file(fpath: String, logger, retries := 1) -> Texture2D:
 	var im := Image.new()
-	var err := im.load(fpath)
+	var err := im.load(ProjectSettings.globalize_path(fpath))
 	if err != OK:
 		if retries > 0:
 			# TODO There is a bug with Godot randomly being unable to load images.
@@ -213,5 +222,3 @@ func configure_paint_input(painters: Array[HT_Painter], position: Vector2, press
 func on_paint_end():
 	_prev_position = Vector2(-999, -999)
 	_prev_time_ms = 0
-
-

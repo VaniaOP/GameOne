@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cvgvc2ebxknk6"]
+
+[ext_resource type="Script" uid="uid://vjptdvxljr1k" path="res://items/itemData.gd" id="1_hou51"]
+
+[resource]
+script = ExtResource("1_hou51")
+item_name = "Lamp"
+description = "Light your way while exploring the woods"

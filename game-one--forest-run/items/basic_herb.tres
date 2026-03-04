@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bx2vu2jpcwusa"]
+
+[ext_resource type="Script" uid="uid://vjptdvxljr1k" path="res://items/itemData.gd" id="1_g18p1"]
+
+[resource]
+script = ExtResource("1_g18p1")
+type = 2
+item_name = "Basic Herb"
+description = "Basic Herb, use it while cooking"

@@ -39,13 +39,14 @@ func change_clouds(select:String=""):
 	var env:Environment
 	env = $WorldEnvironment.environment
 	var weather:String
-	var weather_list = ['normal', 'cloudy', 'rainy', 'thunderstorm', 'clear']
+	var weather_list = ['normal', 'cloudy', 'rainy', 'thunderstorm', 'clear', 'snow']
 	if not select:
 		weather = weather_list.pick_random()
 	else:
 		if not select in weather_list: return
 		weather = select
-	$Player/GPUParticles3D.emitting = false
+	$Player/rain.emitting = false
+	$Player/snow.emitting = false
 	env.volumetric_fog_density = 0.0015
 	match weather:
 		'normal':
@@ -58,15 +59,20 @@ func change_clouds(select:String=""):
 			env.volumetric_fog_density = 0.02
 			c_cov = 0.586
 			c_smo = 0.041
-			$Player/GPUParticles3D.emitting = true
+			$Player/rain.emitting = true
 		'thunderstorm':
 			env.volumetric_fog_density = 0.02
 			c_cov = 0.586
 			c_smo = 0.041
-			$Player/GPUParticles3D.emitting = true
+			$Player/rain.emitting = true
 		'clear':
 			c_cov = 0.188
 			c_smo = 0.035
+		'snow':
+			env.volumetric_fog_density = 0.02
+			c_cov = 0.586
+			c_smo = 0.041
+			$Player/snow.emitting = true
 	clouds.set_shader_parameter("coverage", c_cov)
 	clouds.set_shader_parameter("cloud_smoothness", c_smo)
 

@@ -9,10 +9,16 @@ func _process(delta: float) -> void:
 	$"weather time".text = "Time: "+str(round(GScript.time))+"s"
 	fps = round(1/delta)
 	$fps.text = "FPS: "+str(fps)
+	if Input.is_action_just_pressed('hud'):
+		self.visible = true
+		await get_tree().create_timer(5.0).timeout
+		self.visible = false
 
 func _ready() -> void:
 	set_health_bar()
 	$HealthBar.max_value = MAX_HEALTH
+	self.visible = false
+	
 	
 func set_health_bar() -> void:
 	$HealthBar.value = GScript.HP

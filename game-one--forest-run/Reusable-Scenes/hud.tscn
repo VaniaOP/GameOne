@@ -11,6 +11,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1818677993]
+visible = false
 script = ExtResource("1_cx5ao")
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=614191774]

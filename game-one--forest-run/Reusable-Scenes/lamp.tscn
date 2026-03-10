@@ -60,4 +60,4 @@ mesh = SubResource("ArrayMesh_b0rv1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30602103, 0)
 light_color = Color(1, 1, 0.1882353, 1)
 shadow_enabled = true
-shadow_caster_mask = 4294967293
+shadow_caster_mask = 4294901757

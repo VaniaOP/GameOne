@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://b1rbb8msabp1i" path="res://Scripts/inv.gd" id="1_noaob"]
 
 [node name="inv" type="CanvasLayer" unique_id=530894074]
-visible = false
 script = ExtResource("1_noaob")
 
 [node name="bg" type="Panel" parent="." unique_id=750271153]
@@ -15,7 +14,14 @@ metadata/_edit_lock_ = true
 
 [node name="inv" type="GridContainer" parent="." unique_id=78920162]
 unique_name_in_owner = true
-offset_left = 448.0
+layout_direction = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 512.0
 offset_top = 128.0
-offset_right = 960.0
-offset_bottom = 512.0
+offset_right = -192.0
+offset_bottom = -136.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 4

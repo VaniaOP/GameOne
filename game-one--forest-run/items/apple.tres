@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bwp7ygqhf3okf"]
 
 [ext_resource type="Script" uid="uid://vjptdvxljr1k" path="res://items/itemData.gd" id="1_pv0u0"]
+[ext_resource type="Texture2D" uid="uid://u3qmjaphdjma" path="res://assets/food/Apple.png" id="2_dumep"]
 
 [resource]
 script = ExtResource("1_pv0u0")
 type = 1
 item_name = "Apple"
 description = "This is an apple. You can eat it"
+texture = ExtResource("2_dumep")

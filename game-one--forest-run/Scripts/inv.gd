@@ -9,6 +9,8 @@ var itemsLoad = [
 ]
 
 func _ready() -> void:
+	self.visible = false
+	GScript.hud_open = false
 	for i in InvSize:
 		var slot := InventorySlot.new()
 		slot.init(ItemData.Type.MAIN, Vector2(64,64))
@@ -20,3 +22,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed('inv'):
 		self.visible = !self.visible
+		if self.visible == true:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			GScript.hud_open = true
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			GScript.hud_open = false

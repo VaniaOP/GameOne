@@ -8,6 +8,8 @@ var DAYTIME
 
 var time
 
+var hud_open:bool
+
 
 #global damage function
 #call GScript.hurt() to deal damage

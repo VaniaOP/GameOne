@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b1rbb8msabp1i" path="res://Scripts/inv.gd" id="1_noaob"]
 
 [node name="inv" type="CanvasLayer" unique_id=530894074]
+visible = false
 script = ExtResource("1_noaob")
 
 [node name="bg" type="Panel" parent="." unique_id=750271153]

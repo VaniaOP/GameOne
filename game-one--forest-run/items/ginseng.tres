@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bx2vu2jpcwusa"]
 
 [ext_resource type="Script" uid="uid://vjptdvxljr1k" path="res://items/itemData.gd" id="1_g18p1"]
+[ext_resource type="Texture2D" uid="uid://dfvj5gp5fe0nf" path="res://assets/herbs/dill 32.png" id="2_fiq1x"]
 
 [resource]
 script = ExtResource("1_g18p1")
 type = 2
 item_name = "Ginseng"
 description = "Adds 5% to max health"
+texture = ExtResource("2_fiq1x")

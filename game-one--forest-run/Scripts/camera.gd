@@ -27,7 +27,7 @@ func _ready():
 	
 func _process(_delta: float) -> void:
 	transform.origin = target.transform.origin + offset
-	if is_control:
+	if is_control and !GScript.hud_open:
 		target.control(rotation.y)
 	if $detector.is_colliding():
 		camera.transform.origin.z = $detector.get_collision_point().distance_to(global_transform.origin) - 0.5
@@ -37,14 +37,15 @@ func _process(_delta: float) -> void:
 func upd_detector():
 	$detector.target_position.z = max_distance
 func _input(e):
-	if e is InputEventMouseMotion:
-		rotation.y -= e.relative.x * 0.01
-		rotation.x = clamp(rotation.x - e.relative.y * 0.01, -0.7, 0.5)
-	if e is InputEventMouseButton:
-		if not disable_dist_change:
-			if e.button_index == 5:
-				max_distance += 0.5
-				upd_detector()
-			elif e.button_index == 4:
-				max_distance -= 0.5
-				upd_detector()
+	if !GScript.hud_open:
+		if e is InputEventMouseMotion:
+			rotation.y -= e.relative.x * 0.01
+			rotation.x = clamp(rotation.x - e.relative.y * 0.01, -0.7, 0.5)
+		if e is InputEventMouseButton:
+			if not disable_dist_change:
+				if e.button_index == 5:
+					max_distance += 0.5
+					upd_detector()
+				elif e.button_index == 4:
+					max_distance -= 0.5
+					upd_detector()

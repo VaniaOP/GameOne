@@ -1,11 +1,12 @@
 extends CanvasLayer
 
-var InvSize = 16
+var InvSize = 36
 
 var itemsLoad = [
 	"res://items/apple.tres",
 	"res://items/ginseng.tres",
-	"res://items/lamp.tres"
+	"res://items/lamp.tres",
+	"res://items/apple.tres"
 ]
 
 func _ready() -> void:
@@ -13,7 +14,7 @@ func _ready() -> void:
 	GScript.hud_open = false
 	for i in InvSize:
 		var slot := InventorySlot.new()
-		slot.init(ItemData.Type.MAIN, Vector2(64,64))
+		slot.init(ItemData.Type.MAIN, Vector2(72,72))
 		%inv.add_child(slot)
 	for i in itemsLoad.size():
 		var item := InventoryItem.new()

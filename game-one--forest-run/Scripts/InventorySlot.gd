@@ -4,6 +4,7 @@ extends PanelContainer
 @export var type: ItemData.Type
 
 var max_stack = 5
+@export var elements: int = 0
 
 func init(t: ItemData.Type, cms:Vector2) -> void:
 	type = t
@@ -26,5 +27,16 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 		var item = get_child(0)
 		if item == data:
 			return
+		
+		if data.data.type == item.data.type:
+			print('same same, but different')
+			if elements <= max_stack:
+				elements +=1
+				data.get_parent().elements = 0
+				data.get_parent().remove_child(data)
+				return
 		item.reparent(data.get_parent())
+	data.get_parent().elements = 0
+	elements +=1
 	data.reparent(self)
+	

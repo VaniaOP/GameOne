@@ -20,6 +20,7 @@ func _ready() -> void:
 		var item := InventoryItem.new()
 		item.init(load(itemsLoad[i]))
 		%inv.get_child(i).add_child(item)
+		%inv.get_child(i).elements = 1
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed('inv'):
 		self.visible = !self.visible

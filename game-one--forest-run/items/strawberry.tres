@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bh8wbxb77bagw"]
+
+[ext_resource type="Script" uid="uid://vjptdvxljr1k" path="res://items/itemData.gd" id="1_nj77t"]
+[ext_resource type="Texture2D" uid="uid://d0rq8skkaglh7" path="res://assets/food/Strawberry.png" id="2_e37ib"]
+
+[resource]
+script = ExtResource("1_nj77t")
+type = 1
+item_name = "Strawberry"
+description = "Boosts HEALTH (+15%) and MAX HEALTH (+5%), WEIGHT increased (+2%)"
+texture = ExtResource("2_e37ib")

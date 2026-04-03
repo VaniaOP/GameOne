@@ -10,12 +10,10 @@ func _ready():
 		texture = data.texture
 		tooltip_text = "%s\n%s" % [data.item_name, data.description]
 	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	
 
 func init(d:ItemData) -> void:
 	data = d
-	
-	
+
 func _get_drag_data(at_position: Vector2) -> Variant:
 	set_drag_preview(make_drag_preview(at_position))
 	return self

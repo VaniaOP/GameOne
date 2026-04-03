@@ -5,7 +5,9 @@ var InvSize = 36
 var itemsLoad = [
 	"res://items/apple.tres",
 	"res://items/ginseng.tres",
-	"res://items/lamp.tres",
+	"res://items/chiliPowder.tres",
+	"res://items/cookie.tres",
+	"res://items/strawberry.tres",
 	"res://items/apple.tres"
 ]
 
@@ -20,7 +22,6 @@ func _ready() -> void:
 		var item := InventoryItem.new()
 		item.init(load(itemsLoad[i]))
 		%inv.get_child(i).add_child(item)
-		%inv.get_child(i).elements = 1
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed('inv'):
 		self.visible = !self.visible

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://kvq7an51cavx"]
+
+[ext_resource type="Script" uid="uid://vjptdvxljr1k" path="res://items/itemData.gd" id="1_8tua1"]
+[ext_resource type="Texture2D" uid="uid://ctdn3c4eswmbu" path="res://assets/food/Cookie.png" id="2_x4d00"]
+
+[resource]
+script = ExtResource("1_8tua1")
+type = 1
+item_name = "Cookie"
+description = "Gain HEALTH (+5%) and AGILITY (+5%), increases WEIGHT (+2%)"
+texture = ExtResource("2_x4d00")

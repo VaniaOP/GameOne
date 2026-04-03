@@ -7,5 +7,5 @@
 script = ExtResource("1_pv0u0")
 type = 1
 item_name = "Apple"
-description = "This is an apple. You can eat it"
+description = "Gain HEALTH (+15%), MAX HEALTH (+5%), AGILITY (+5%)s"
 texture = ExtResource("2_dumep")

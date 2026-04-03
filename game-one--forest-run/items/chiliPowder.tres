@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cpv8ko3ynn0ej"]
+
+[ext_resource type="Script" uid="uid://vjptdvxljr1k" path="res://items/itemData.gd" id="1_aco01"]
+
+[resource]
+script = ExtResource("1_aco01")
+item_name = "Chili Powder"
+description = "Chili Powder, boosts AGILITY (+5%), reduces HEALTH (-10%) if CONSUMED.Use it in CRAFTS to gain AGILITY (+15%) and HEALTH (+5%)"

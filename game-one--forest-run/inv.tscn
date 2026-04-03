@@ -7,6 +7,7 @@
 script = ExtResource("1_noaob")
 
 [node name="bg" type="Panel" parent="." unique_id=750271153]
+visible = false
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_left = 128.0
@@ -31,21 +32,35 @@ columns = 6
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=444868108]
 offset_left = 224.0
-offset_top = 272.0
-offset_right = 420.0
-offset_bottom = 368.0
+offset_top = 192.0
+offset_right = 434.0
+offset_bottom = 423.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=699618074]
 layout_mode = 2
 
-[node name="LeftHandSlot" type="PanelContainer" parent="VBoxContainer/HBoxContainer" unique_id=1509148147]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer" unique_id=1509148147]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 script = ExtResource("2_7mfnc")
 type = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=800457678]
+layout_mode = 2
+text = "+"
 
 [node name="RightHandSlot" type="PanelContainer" parent="VBoxContainer/HBoxContainer" unique_id=1730520271]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 script = ExtResource("2_7mfnc")
 type = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=1953452614]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+script = ExtResource("2_7mfnc")
+type = 5
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=1924652750]
+layout_mode = 2
+text = "CRAFT"

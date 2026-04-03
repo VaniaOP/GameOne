@@ -2,9 +2,12 @@ extends Node3D
 @export var daytime:String = "day"
 
 @export var clouds: ShaderMaterial = preload("res://materials/SkyMaterial.tres")
+@onready var sun: DirectionalLight3D = $Sun
 
 var c_cov:float
 var c_smo:float
+
+var blur:float
 
 
 func _ready() -> void:
@@ -52,29 +55,37 @@ func change_clouds(select:String=""):
 		'normal':
 			c_cov = 0.286
 			c_smo = 0.045
+			blur = 0.0
 		'cloudy':
 			c_cov = 0.469
 			c_smo = 0.095
+			blur = 0.4
 		'rainy':
 			env.volumetric_fog_density = 0.02
 			c_cov = 0.586
 			c_smo = 0.041
+			blur = 0.4
 			$Player/rain.emitting = true
 		'thunderstorm':
 			env.volumetric_fog_density = 0.02
 			c_cov = 0.586
 			c_smo = 0.041
+			blur = 0.4
 			$Player/rain.emitting = true
 		'clear':
 			c_cov = 0.188
 			c_smo = 0.035
+			blur = 0.0
 		'snow':
 			env.volumetric_fog_density = 0.02
 			c_cov = 0.586
 			c_smo = 0.041
+			blur = 0.4
 			$Player/snow.emitting = true
 	clouds.set_shader_parameter("coverage", c_cov)
 	clouds.set_shader_parameter("cloud_smoothness", c_smo)
+	sun.shadow_blur = blur
+	
 
 
 func _on_weather_timer_timeout() -> void:

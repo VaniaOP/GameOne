@@ -13,7 +13,6 @@ var disable_dist_change = false
 
 func _ready():
 	GScript.player = self
-	GScript.HP=100
 	S('Idle', 'Idle')
 
 func _physics_process(delta):

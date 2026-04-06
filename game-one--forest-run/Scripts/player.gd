@@ -40,7 +40,7 @@ func _physics_process(delta):
 				velocity.y = 8
 		else:
 			velocity.y += GRAVITY*delta
-		if GScript.HP == 0:
+		if GScript.playerStat.health == 0:
 			print("dead")
 			#player died
 			#have to script

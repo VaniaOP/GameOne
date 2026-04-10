@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c5jv1nwwmrddf"]
+[gd_scene format=3 uid="uid://n41j8rks0hqd"]
 
 [ext_resource type="Script" uid="uid://dhk56505gireo" path="res://Scripts/world.gd" id="1_kqs1s"]
 [ext_resource type="Material" uid="uid://7wuop4abysij" path="res://materials/SkyMaterial.tres" id="2_d1c63"]
@@ -28,7 +28,7 @@ environment = SubResource("Environment_1lgw5")
 [node name="Sun" type="DirectionalLight3D" parent="." unique_id=980743604]
 transform = Transform3D(1, 0, 0, 0, 0.9999889, -0.0049032667, 0, 0.0049032667, 0.9999889, 0, 0, 0)
 light_color = Color(1, 0.42451906, 0, 1)
-light_energy = 0.9914196
+light_energy = 0.99141896
 light_angular_distance = 3.0
 light_specular = 0.0
 shadow_enabled = true
@@ -43,6 +43,6 @@ light_specular = 0.0
 shadow_enabled = true
 
 [node name="Sky" parent="." unique_id=1633142508 node_paths=PackedStringArray("environment", "sun") instance=ExtResource("3_c2he0")]
-time_of_day = 1.7651813722222423
+time_of_day = 1.7651813722222425
 environment = NodePath("../WorldEnvironment")
 sun = NodePath("../Sun")

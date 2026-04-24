@@ -5,6 +5,6 @@
 
 [resource]
 script = ExtResource("1_hou51")
-item_name = "Lamp"
+itemName = "Lamp"
 description = "Light your way while exploring the woods"
 texture = ExtResource("2_2fayl")

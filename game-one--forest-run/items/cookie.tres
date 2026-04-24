@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_8tua1")
 type = 1
-item_name = "Cookie"
+itemName = "Cookie"
 description = "Gain HEALTH (+5%) and AGILITY (+5%), increases WEIGHT (+2%)"
 texture = ExtResource("2_x4d00")

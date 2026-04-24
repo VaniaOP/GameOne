@@ -28,9 +28,9 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 		if item == data:
 			return
 		
-		if data.data.item_name == item.data.item_name:
+		if data.data.itemName == item.data.itemName:
 			return
-		#if data.data.type == item.data.type:
+		#if data.data.type == item.data.type:	
 			#print('same same, but different')
 			#if elements <= max_stack:
 				#elements +=1

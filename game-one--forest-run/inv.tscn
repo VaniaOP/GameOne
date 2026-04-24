@@ -39,7 +39,7 @@ offset_bottom = 423.0
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=699618074]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer" unique_id=1509148147]
+[node name="Slot1" type="PanelContainer" parent="VBoxContainer/HBoxContainer" unique_id=1509148147]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 script = ExtResource("2_7mfnc")
@@ -49,18 +49,20 @@ type = 3
 layout_mode = 2
 text = "+"
 
-[node name="RightHandSlot" type="PanelContainer" parent="VBoxContainer/HBoxContainer" unique_id=1730520271]
+[node name="Slot2" type="PanelContainer" parent="VBoxContainer/HBoxContainer" unique_id=1730520271]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 script = ExtResource("2_7mfnc")
 type = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=1953452614]
+[node name="result" type="PanelContainer" parent="VBoxContainer" unique_id=1953452614]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 script = ExtResource("2_7mfnc")
-type = 5
+type = 3
 
 [node name="Button" type="Button" parent="VBoxContainer" unique_id=1924652750]
 layout_mode = 2
 text = "CRAFT"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

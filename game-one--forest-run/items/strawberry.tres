@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_nj77t")
 type = 1
-item_name = "Strawberry"
+itemName = "Stawberry"
 description = "Boosts HEALTH (+15%) and MAX HEALTH (+5%), WEIGHT increased (+2%)"
 texture = ExtResource("2_e37ib")

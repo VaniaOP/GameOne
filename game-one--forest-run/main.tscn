@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://22jq2ny5boyj" path="res://Reusable-Scenes/Sky.tscn" id="13_w48qg"]
 [ext_resource type="PackedScene" uid="uid://jbf7js7j3mi6" path="res://Reusable-Scenes/lamp.tscn" id="15_vivmo"]
 [ext_resource type="PackedScene" uid="uid://dgptjpujvnpjl" path="res://Reusable-Scenes/hud.tscn" id="16_2cqfq"]
-[ext_resource type="Shader" uid="uid://c7idmrxe7vodt" path="res://Scripts/water.gdshader" id="16_yaehf"]
 [ext_resource type="PackedScene" uid="uid://bn32r51srlpfu" path="res://inv.tscn" id="17_yaehf"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vivmo"]
@@ -190,48 +189,6 @@ _data = {
 &"cycler": SubResource("Animation_w48qg")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_82xsv"]
-render_priority = 0
-shader = ExtResource("16_yaehf")
-shader_parameter/color_shallow = Color(0.01, 0.2, 0.3, 1)
-shader_parameter/color_deep = Color(0.3, 0.5, 0.6, 1)
-shader_parameter/transparency = 0.18999999575312
-shader_parameter/metallic = 0.52999998815344
-shader_parameter/roughness = 0.25
-shader_parameter/max_visible_depth = 26.60000039637192
-shader_parameter/wave_move_direction_a = Vector2(-1, 0)
-shader_parameter/wave_move_direction_b = Vector2(0, 1)
-shader_parameter/wave_noise_scale_a = 15.0
-shader_parameter/wave_noise_scale_b = 15.0
-shader_parameter/wave_time_scale_a = 0.15
-shader_parameter/wave_time_scale_b = 0.15
-shader_parameter/wave_height_scale = 1.0
-shader_parameter/wave_normal_flatness = 50.0
-shader_parameter/surface_normals_move_direction_a = Vector2(-1, 0.2)
-shader_parameter/surface_normals_move_direction_b = Vector2(0.2, 1)
-shader_parameter/surface_texture_roughness = 0.15
-shader_parameter/surface_texture_scale = 0.1
-shader_parameter/surface_texture_time_scale = 0.06
-shader_parameter/ssr_resolution = 1.0
-shader_parameter/ssr_max_travel = 30.0
-shader_parameter/ssr_max_diff = 4.0
-shader_parameter/ssr_mix_strength = 0.7
-shader_parameter/ssr_screen_border_fadeout = 0.3
-shader_parameter/refraction_intensity = 0.4
-shader_parameter/border_color = Color(1, 1, 1, 1)
-shader_parameter/border_scale = 0.0
-shader_parameter/border_near = 0.5
-shader_parameter/border_far = 300.0
-shader_parameter/cut_out_x = 0.0
-shader_parameter/cut_out_z = 0.0
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_getpj"]
-material = SubResource("ShaderMaterial_82xsv")
-size = Vector2(70, 50)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_074og"]
-size = Vector3(61.368225, 16.5542, 42.728653)
-
 [node name="main" type="Node3D" unique_id=1746329902]
 script = ExtResource("1_w48qg")
 daytime = "night"
@@ -347,18 +304,6 @@ libraries/ = SubResource("AnimationLibrary_vivmo")
 
 [node name="lamp" parent="." unique_id=1846789433 instance=ExtResource("15_vivmo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.9858, 307.226, -13.086014)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2006257452]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5258789e-05, 0, -1.5258789e-05)
-
-[node name="lake" type="MeshInstance3D" parent="StaticBody3D" unique_id=438398716]
-transform = Transform3D(0.8604487, 0, 0.50953704, 0, 1, 0, -0.50953704, 0, 0.8604487, 207.64874, 421.4424, -225.11023)
-mesh = SubResource("PlaneMesh_getpj")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=3420832]
-transform = Transform3D(0.8604487, 0, 0.50953704, 0, 1, 0, -0.50953704, 0, 0.8604487, 204.50887, 429.2195, -223.20076)
-shape = SubResource("BoxShape3D_074og")
 
 [node name="inv" parent="." unique_id=530894074 instance=ExtResource("17_yaehf")]
 

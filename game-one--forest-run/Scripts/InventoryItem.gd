@@ -8,7 +8,7 @@ func _ready():
 	stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	if data:
 		texture = data.texture
-		tooltip_text = "%s\n%s" % [data.item_name, data.description]
+		tooltip_text = "%s\n%s" % [data.itemName, data.description]
 	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 
 func init(d:ItemData) -> void:

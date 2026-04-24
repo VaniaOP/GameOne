@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_g18p1")
 type = 2
-item_name = "Ginseng"
+itemName = "Ginseng"
 description = "Boosts MAX HEALTH (+5%) if consumed. Use it in crafts to maximise buffs (+20% MAX HEALTH)"
 texture = ExtResource("2_fiq1x")
 consumable = true

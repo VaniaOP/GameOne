@@ -32,8 +32,6 @@ func _on_button_pressed() -> void:
 	var slot1 = $VBoxContainer/HBoxContainer/Slot1.get_child(0).data.itemName
 	var slot2 = $VBoxContainer/HBoxContainer/Slot2.get_child(0).data.itemName
 	
-	print(slot1)
-	
 	craft([slot1, slot2])
 
 func craft(items:Array):
@@ -45,9 +43,31 @@ func craft(items:Array):
 	#check if it is in dict
 	if items not in crafts:return
 	if resultSlot.get_child_count() > 1: return
+	#check if slot free, else move
+	if resultSlot.get_child_count() > 0:
+		for i in range(resultSlot.get_child_count()):
+			var k:int = firstSlot()
+			if k != 999:
+				resultSlot.get_child(i).reparent(%inv.get_child(k))
+			else:
+				print('no spot')
+				$VBoxContainer/fullMessage.show()
+				$VBoxContainer/Button.disabled = true
+				await get_tree().create_timer(5.0).timeout
+				$VBoxContainer/Button.disabled = false
+				$VBoxContainer/fullMessage.hide()
+				return
 	#create new child
 	var item := InventoryItem.new()
 	item.init(load(crafts.get(items)))
 	resultSlot.add_child(item)
 	#delete old items
+	#$VBoxContainer/HBoxContainer/Slot1.get_child(0).queue_free()
+	#$VBoxContainer/HBoxContainer/Slot2.get_child(0).queue_free()
 	
+func firstSlot():
+	for i in %inv.get_child_count():
+		if %inv.get_child(i).get_child_count() == 0:
+			if i == (%inv.get_child_count()-1): return 999
+			return i
+	return 999

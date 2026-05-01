@@ -3,10 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://dv18p54ldugnx" path="res://Reusable-Scenes/camera.tscn" id="1_2cqfq"]
 [ext_resource type="Script" uid="uid://w5d6bfmbwxcr" path="res://Scripts/main.gd" id="1_w48qg"]
 [ext_resource type="PackedScene" uid="uid://nqpslx1t6fv4" path="res://Reusable-Scenes/Player.tscn" id="2_7mycd"]
-[ext_resource type="PackedScene" uid="uid://n41j8rks0hqd" path="res://Reusable-Scenes/World.tscn" id="10_4c57u"]
+[ext_resource type="PackedScene" uid="uid://n41j8rks0hqd" path="res://models/scenes/World.tscn" id="10_4c57u"]
 [ext_resource type="Material" uid="uid://7wuop4abysij" path="res://materials/SkyMaterial.tres" id="12_ycdy4"]
-[ext_resource type="PackedScene" uid="uid://22jq2ny5boyj" path="res://Reusable-Scenes/Sky.tscn" id="13_w48qg"]
-[ext_resource type="PackedScene" uid="uid://jbf7js7j3mi6" path="res://Reusable-Scenes/lamp.tscn" id="15_vivmo"]
+[ext_resource type="PackedScene" uid="uid://22jq2ny5boyj" path="res://models/scenes/Sky.tscn" id="13_w48qg"]
+[ext_resource type="PackedScene" uid="uid://jbf7js7j3mi6" path="res://models/scenes/lamp.tscn" id="15_vivmo"]
 [ext_resource type="PackedScene" uid="uid://dgptjpujvnpjl" path="res://Reusable-Scenes/hud.tscn" id="16_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://bn32r51srlpfu" path="res://inv.tscn" id="17_yaehf"]
 
@@ -299,6 +299,7 @@ sun = NodePath("../Sun")
 
 [node name="Daynight" type="AnimationPlayer" parent="." unique_id=1520136625]
 libraries/ = SubResource("AnimationLibrary_vivmo")
+speed_scale = 20.0
 
 [node name="weather_timer" type="Timer" parent="." unique_id=1291512973]
 

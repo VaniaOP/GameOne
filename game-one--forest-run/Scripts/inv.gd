@@ -34,15 +34,16 @@ func _on_button_pressed() -> void:
 	
 	craft([slot1, slot2])
 
+#works, but can probably be done better
 func craft(items:Array):
 	#all crafts
-	var crafts:Dictionary = {['Apple', 'Ginseng']:"res://items/cookie.tres"}
+	#need more items, these are tests
+	var crafts:Dictionary = {['Apple', 'Ginseng']:"res://items/cookie.tres", ['ChiliPowder', 'Stawberry']:"res://items/lamp.tres"}
 	var resultSlot = $VBoxContainer/result
 	#sort list, so that it is recognised in dict
 	items.sort()
 	#check if it is in dict
 	if items not in crafts:return
-	if resultSlot.get_child_count() > 1: return
 	#check if slot free, else move
 	if resultSlot.get_child_count() > 0:
 		for i in range(resultSlot.get_child_count()):
@@ -57,17 +58,21 @@ func craft(items:Array):
 				$VBoxContainer/Button.disabled = false
 				$VBoxContainer/fullMessage.hide()
 				return
+	var n = firstSlot()
+	if n == 999: return
+	print('all good, crafting')
 	#create new child
 	var item := InventoryItem.new()
 	item.init(load(crafts.get(items)))
 	resultSlot.add_child(item)
 	#delete old items
-	#$VBoxContainer/HBoxContainer/Slot1.get_child(0).queue_free()
-	#$VBoxContainer/HBoxContainer/Slot2.get_child(0).queue_free()
+	$VBoxContainer/HBoxContainer/Slot1.get_child(0).queue_free()
+	$VBoxContainer/HBoxContainer/Slot2.get_child(0).queue_free()
 	
 func firstSlot():
-	for i in %inv.get_child_count():
+	var num = %inv.get_child_count()
+	for i in num:
 		if %inv.get_child(i).get_child_count() == 0:
-			if i == (%inv.get_child_count()-1): return 999
+			if i == (%inv.get_child_count()): return 999
 			return i
 	return 999

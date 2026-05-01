@@ -5,6 +5,6 @@
 
 [resource]
 script = ExtResource("1_aco01")
-itemName = "Chili Powder"
+itemName = "ChiliPowder"
 description = "Chili Powder, boosts AGILITY (+5%), reduces HEALTH (-10%) if CONSUMED.Use it in CRAFTS to gain AGILITY (+15%) and HEALTH (+5%)"
 texture = ExtResource("2_dvkdl")

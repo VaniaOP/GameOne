@@ -1,6 +1,6 @@
 [gd_resource type="ArrayMesh" format=4 uid="uid://hf1rsookwo2s"]
 
-[ext_resource type="Shader" uid="uid://bi3o8elbtqoni" path="res://addons/simplegrasstextured/shaders/grass.gdshader" id="1_ebw2w"]
+[ext_resource type="Shader" uid="uid://by3reahk7u26d" path="res://addons/simplegrasstextured/shaders/grass.gdshader" id="1_ebw2w"]
 [ext_resource type="Texture2D" uid="uid://clohqqcuejvg1" path="res://models/spruce/source/spruce_26e72b74f5a97b0edf8d6f980e9d8863_upscayl_1x_realesrgan-x4plus.png" id="2_580lh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vy2kl"]

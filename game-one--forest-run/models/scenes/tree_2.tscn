@@ -15,18 +15,21 @@ normal_texture = ExtResource("2_ayljb")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sosyc"]
 resource_name = "Leaf"
 transparency = 2
-alpha_scissor_threshold = 0.262
+alpha_scissor_threshold = 0.126
 alpha_antialiasing_mode = 0
-blend_mode = 4
 cull_mode = 2
-depth_draw_mode = 1
 albedo_texture = ExtResource("3_3opyc")
-metallic = 1.0
+metallic = 0.75
+metallic_specular = 0.8
 roughness = 0.5
+normal_enabled = true
 normal_texture = ExtResource("4_t2mi2")
 bent_normal_texture = ExtResource("4_t2mi2")
-ao_light_affect = 0.39
-subsurf_scatter_strength = 0.48
+anisotropy = -0.72
+ao_enabled = true
+ao_light_affect = 0.23
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.24
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_0q5s4"]
 _surfaces = [{
@@ -139,12 +142,12 @@ shape = SubResource("CapsuleShape3D_0orum")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="shadow" unique_id=1404541026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4292779, 9.955744, 0)
-layers = 32768
+cast_shadow = 3
 mesh = SubResource("CylinderMesh_0orum")
 skeleton = NodePath("../..")
 
 [node name="SpruceOne2" type="MeshInstance3D" parent="shadow" unique_id=1501242391]
 transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 0, 0)
-layers = 32768
+cast_shadow = 3
 mesh = SubResource("ArrayMesh_0orum")
 skeleton = NodePath("../..")

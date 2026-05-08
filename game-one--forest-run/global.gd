@@ -9,6 +9,8 @@ var time
 
 var hud_open:bool
 
+var inv
+
 var playerStat:Dictionary = {'health':100.0, 'maxHealth':100.0, 'agility':50.0, 'weight':70.0}
 
 signal update
@@ -16,7 +18,6 @@ signal update
 var inventoryItems:Array = [
 	"res://items/apple.tres",
 	"res://items/ginseng.tres",
-	"res://items/chiliPowder.tres",
 	"res://items/cookie.tres",
 	"res://items/strawberry.tres",
 	"res://items/apple.tres"
@@ -58,3 +59,13 @@ func attribute(changes:Dictionary, timerTime:int=999):
 
 #this process function somehow slows down the scene
 #maybe search for a better way for applying attributes
+
+
+#add item to inventory, if full return 999
+func inventoryAddItem(item:ItemData) -> int:
+	var slot = inv.firstSlot()
+	if slot == 999: return 0
+	var obj = item.resource_path
+	inventoryItems.append(obj)
+	inv.newItem(slot)
+	return 1

@@ -7,6 +7,7 @@ var itemsLoad = GScript.inventoryItems
 func _ready() -> void:
 	self.visible = false
 	GScript.hud_open = false
+	GScript.inv = self
 	for i in InvSize:
 		var slot := InventorySlot.new()
 		slot.init(ItemData.Type.MAIN, Vector2(72,72))
@@ -24,6 +25,7 @@ func _process(_delta: float) -> void:
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			GScript.hud_open = false
+	itemsLoad = GScript.inventoryItems
 
 
 func _on_button_pressed() -> void:
@@ -76,3 +78,8 @@ func firstSlot():
 			if i == (%inv.get_child_count()): return 999
 			return i
 	return 999
+	
+func newItem(slot):
+	var item := InventoryItem.new()
+	item.init(load(itemsLoad[-1]))
+	%inv.get_child(slot).add_child(item)

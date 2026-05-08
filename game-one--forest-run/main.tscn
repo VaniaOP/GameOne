@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://w5d6bfmbwxcr" path="res://Scripts/main.gd" id="1_w48qg"]
 [ext_resource type="PackedScene" uid="uid://nqpslx1t6fv4" path="res://Reusable-Scenes/Player.tscn" id="2_7mycd"]
 [ext_resource type="PackedScene" uid="uid://n41j8rks0hqd" path="res://models/scenes/World.tscn" id="10_4c57u"]
+[ext_resource type="PackedScene" uid="uid://d0pwmnrmo7p32" path="res://models/scenes/collectable.tscn" id="10_efxa6"]
+[ext_resource type="Resource" uid="uid://cpv8ko3ynn0ej" path="res://items/chiliPowder.tres" id="11_efxa6"]
 [ext_resource type="Material" uid="uid://7wuop4abysij" path="res://materials/SkyMaterial.tres" id="12_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://22jq2ny5boyj" path="res://models/scenes/Sky.tscn" id="13_w48qg"]
 [ext_resource type="PackedScene" uid="uid://jbf7js7j3mi6" path="res://models/scenes/lamp.tscn" id="15_vivmo"]
@@ -25,35 +27,38 @@ collision_friction = 0.0
 collision_bounce = 0.0
 
 [sub_resource type="Curve" id="Curve_vivmo"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.18603882, 0.08177078), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.535316, 0.15479875), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w48qg"]
 cull_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.728822, 0.728822, 0.728822, 1)
+albedo_color = Color(0.8836219, 0.8236449, 0.76875496, 1)
 use_particle_trails = true
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_2cqfq"]
 material = SubResource("StandardMaterial3D_w48qg")
 curve = SubResource("Curve_vivmo")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w48qg"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4c57u"]
 lifetime_randomness = 1.0
 emission_shape = 3
 emission_box_extents = Vector3(150, 1, 150)
-angle_min = -29.99999
-angle_max = 30.000011
+angle_min = -43.19999
+angle_max = 43.10001
 direction = Vector3(0, -1, 0)
 spread = 5.0
-initial_velocity_max = 4.5699997
+initial_velocity_max = 0.099999994
 collision_mode = 1
 collision_friction = 0.0
 collision_bounce = 0.0
 
-[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_vivmo"]
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_4c57u"]
 material = SubResource("StandardMaterial3D_w48qg")
+size = 0.5
+section_length = 0.001
+section_segments = 1
 curve = SubResource("Curve_vivmo")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2cqfq"]
@@ -197,10 +202,10 @@ daytime = "night"
 target_node = NodePath("../Player")
 
 [node name="Player" parent="." unique_id=914964442 instance=ExtResource("2_7mycd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.20845, 306.22388, -10.47355)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.20845, 490.2382, -10.47355)
 
 [node name="rain" type="GPUParticles3D" parent="Player" unique_id=59580134]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 200, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 222.93845, 0)
 emitting = false
 amount = 50000
 lifetime = 4.0
@@ -213,7 +218,7 @@ process_material = SubResource("ParticleProcessMaterial_vivmo")
 draw_pass_1 = SubResource("RibbonTrailMesh_2cqfq")
 
 [node name="snow" type="GPUParticles3D" parent="Player" unique_id=818861962]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 200, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 222.93845, 0)
 emitting = false
 amount = 50000
 lifetime = 7.0
@@ -222,8 +227,8 @@ fixed_fps = 60
 visibility_aabb = AABB(-50, -500, -50, 100, 1000, 100)
 trail_enabled = true
 trail_lifetime = 0.1
-process_material = SubResource("ParticleProcessMaterial_w48qg")
-draw_pass_1 = SubResource("RibbonTrailMesh_vivmo")
+process_material = SubResource("ParticleProcessMaterial_4c57u")
+draw_pass_1 = SubResource("RibbonTrailMesh_4c57u")
 
 [node name="CanvasLayer" parent="." unique_id=1351390472 instance=ExtResource("16_2cqfq")]
 
@@ -270,6 +275,7 @@ shadow_enabled = true
 shadow_caster_mask = 4294901759
 directional_shadow_blend_splits = true
 directional_shadow_max_distance = 300.0
+directional_shadow_pancake_size = 336.1
 
 [node name="Moon" type="DirectionalLight3D" parent="." unique_id=42253593]
 transform = Transform3D(-0.6387679, -0.6793393, -0.3612112, 0, -0.46947148, 0.8829477, -0.76939946, 0.56399846, 0.2998834, 0, 0, 0)
@@ -308,6 +314,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.9858, 307.226, -6.008496)
 [node name="inv" parent="." unique_id=530894074 instance=ExtResource("17_yaehf")]
 
 [node name="World" parent="." unique_id=383108648 instance=ExtResource("10_4c57u")]
+
+[node name="items" type="Node3D" parent="." unique_id=183366395]
+
+[node name="collectable" parent="items" unique_id=335210421 instance=ExtResource("10_efxa6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.97739, 488.48734, -18.266441)
+resource = ExtResource("11_efxa6")
 
 [connection signal="body_entered" from="secret scene" to="." method="_on_secret_scene_body_entered"]
 [connection signal="animation_changed" from="Daynight" to="." method="_on_daynight_animation_changed"]

@@ -21,6 +21,8 @@ func _ready() -> void:
 	#testing time
 	#$weather_timer.wait_time = randi_range(3, 6)
 	$weather_timer.start()
+	for i in $items.get_children():
+		i._init()
 		
 func _process(_delta: float) -> void:
 	SimpleGrass.set_player_position($Player.position)

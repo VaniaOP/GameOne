@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+class_name PLAYER
+
 #const ROT_SPEED = 0.05
 const GRAVITY = -20
 const SPEED = 1.3

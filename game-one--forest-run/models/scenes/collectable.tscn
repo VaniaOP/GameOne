@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://d0pwmnrmo7p32"]
+
+[ext_resource type="Script" uid="uid://b7fcjfvaa3ncy" path="res://Scripts/collectable.gd" id="1_2gl88"]
+
+[sub_resource type="Animation" id="Animation_k3w53"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1o2wh"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.2, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 3.1415927, 0), Vector3(0, 6.2831855, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aoeo3"]
+_data = {
+&"RESET": SubResource("Animation_k3w53"),
+&"idle": SubResource("Animation_1o2wh")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_owkd0"]
+radius = 0.43449733
+
+[node name="collectable" type="Node3D" unique_id=335210421]
+script = ExtResource("1_2gl88")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=568293207]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+texture_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=220414138]
+libraries/ = SubResource("AnimationLibrary_aoeo3")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1437632578]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1635132973]
+shape = SubResource("SphereShape3D_owkd0")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

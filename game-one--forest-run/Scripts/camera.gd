@@ -25,7 +25,7 @@ func _ready():
 	disable_dist_change = 'disable_dist_change' in target && target.disable_dist_change
 	upd_detector()
 	
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	transform.origin = target.transform.origin + offset
 	if is_control and !GScript.hud_open:
 		target.control(rotation.y)

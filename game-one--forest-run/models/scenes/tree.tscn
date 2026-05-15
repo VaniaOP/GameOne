@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://nxmfr1vqyxsq"]
 
 [ext_resource type="Texture2D" uid="uid://q08fgmrsy28e" path="res://textures/SNOW/Snow010A_1K-JPG_NormalDX.jpg" id="1_46jps"]
+[ext_resource type="Script" uid="uid://cram8nsomys2y" path="res://Scripts/tree.gd" id="1_ueq0w"]
 [ext_resource type="Texture2D" uid="uid://28bgmfbbx4rm" path="res://textures/model textures/wood.jpg" id="1_wjprh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3u7f2"]
@@ -81,7 +82,10 @@ height = 6.277649
 [sub_resource type="SphereShape3D" id="SphereShape3D_wjprh"]
 radius = 6.977054
 
-[node name="tree" type="Node3D" unique_id=276557766]
+[node name="tree" type="Node3D" unique_id=276557766 node_paths=PackedStringArray("marker", "timerNode")]
+script = ExtResource("1_ueq0w")
+marker = NodePath("Marker3D")
+timerNode = NodePath("Timer")
 
 [node name="TreeForGame" type="MeshInstance3D" parent="." unique_id=1846596181]
 mesh = SubResource("ArrayMesh_wge3a")
@@ -95,3 +99,10 @@ shape = SubResource("CapsuleShape3D_wjprh")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=1176049534]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.682, 0)
 shape = SubResource("SphereShape3D_wjprh")
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=659846940]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3454918, 1.5579324)
+
+[node name="Timer" type="Timer" parent="." unique_id=1200471869]
+
+[connection signal="timeout" from="Timer" to="." method="timer"]

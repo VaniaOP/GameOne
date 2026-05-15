@@ -21,8 +21,6 @@ func _ready() -> void:
 	#testing time
 	#$weather_timer.wait_time = randi_range(3, 6)
 	$weather_timer.start()
-	for i in $items.get_children():
-		i._init()
 		
 func _process(_delta: float) -> void:
 	SimpleGrass.set_player_position($Player.position)
@@ -32,7 +30,7 @@ func _process(_delta: float) -> void:
 	#used to check weather switch
 	if Input.is_action_just_released("change_weather"):
 		change_clouds()
-	GScript.time = $weather_timer.time_left
+	
 	
 func _on_secret_scene_body_entered(_body: Node3D) -> void:
 	if daytime != "night": return

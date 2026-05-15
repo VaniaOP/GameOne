@@ -4,8 +4,6 @@
 [ext_resource type="Script" uid="uid://w5d6bfmbwxcr" path="res://Scripts/main.gd" id="1_w48qg"]
 [ext_resource type="PackedScene" uid="uid://nqpslx1t6fv4" path="res://Reusable-Scenes/Player.tscn" id="2_7mycd"]
 [ext_resource type="PackedScene" uid="uid://n41j8rks0hqd" path="res://models/scenes/World.tscn" id="10_4c57u"]
-[ext_resource type="PackedScene" uid="uid://d0pwmnrmo7p32" path="res://models/scenes/collectable.tscn" id="10_efxa6"]
-[ext_resource type="Resource" uid="uid://cpv8ko3ynn0ej" path="res://items/chiliPowder.tres" id="11_efxa6"]
 [ext_resource type="Material" uid="uid://7wuop4abysij" path="res://materials/SkyMaterial.tres" id="12_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://22jq2ny5boyj" path="res://models/scenes/Sky.tscn" id="13_w48qg"]
 [ext_resource type="PackedScene" uid="uid://jbf7js7j3mi6" path="res://models/scenes/lamp.tscn" id="15_vivmo"]
@@ -270,12 +268,8 @@ environment = SubResource("Environment_vivmo")
 [node name="Sun" type="DirectionalLight3D" parent="." unique_id=896065248]
 light_color = Color(1, 0.42451906, 0, 1)
 light_angular_distance = 0.5
-light_specular = 0.14
 shadow_enabled = true
 shadow_caster_mask = 4294901759
-directional_shadow_blend_splits = true
-directional_shadow_max_distance = 300.0
-directional_shadow_pancake_size = 336.1
 
 [node name="Moon" type="DirectionalLight3D" parent="." unique_id=42253593]
 transform = Transform3D(-0.6387679, -0.6793393, -0.3612112, 0, -0.46947148, 0.8829477, -0.76939946, 0.56399846, 0.2998834, 0, 0, 0)
@@ -304,7 +298,6 @@ sun = NodePath("../Sun")
 
 [node name="Daynight" type="AnimationPlayer" parent="." unique_id=1520136625]
 libraries/ = SubResource("AnimationLibrary_vivmo")
-speed_scale = 20.0
 
 [node name="weather_timer" type="Timer" parent="." unique_id=1291512973]
 
@@ -314,12 +307,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.9858, 307.226, -6.008496)
 [node name="inv" parent="." unique_id=530894074 instance=ExtResource("17_yaehf")]
 
 [node name="World" parent="." unique_id=383108648 instance=ExtResource("10_4c57u")]
-
-[node name="items" type="Node3D" parent="." unique_id=183366395]
-
-[node name="collectable" parent="items" unique_id=335210421 instance=ExtResource("10_efxa6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.97739, 488.48734, -18.266441)
-resource = ExtResource("11_efxa6")
 
 [connection signal="body_entered" from="secret scene" to="." method="_on_secret_scene_body_entered"]
 [connection signal="animation_changed" from="Daynight" to="." method="_on_daynight_animation_changed"]

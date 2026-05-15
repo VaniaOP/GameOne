@@ -10,9 +10,6 @@ func updateMaxHealth():
 
 func _process(delta: float) -> void:
 	set_health_bar()
-	$"weather time".text = "Time: "+str(round(GScript.time))+"s"
-	fps = round(1/delta)
-	$fps.text = "FPS: "+str(fps)
 	if Input.is_action_just_pressed('hud'):
 		self.visible = true
 		await get_tree().create_timer(5.0).timeout

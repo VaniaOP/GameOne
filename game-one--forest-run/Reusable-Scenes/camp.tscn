@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://d1lyaxh8fhhkw"]
+
+[ext_resource type="Script" uid="uid://cvr1ybqwhtwyp" path="res://Scripts/camp.gd" id="1_axn7i"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_irbtq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_axn7i"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_axn7i"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_axn7i"]
+radius = 0.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bdbjw"]
+size = Vector3(2.5, 2.5, 2.5)
+
+[node name="camp" type="Node3D" unique_id=1222015121]
+script = ExtResource("1_axn7i")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=776538152]
+
+[node name="tent" type="MeshInstance3D" parent="StaticBody3D" unique_id=1129339485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("PrismMesh_irbtq")
+
+[node name="tentCol" type="CollisionShape3D" parent="StaticBody3D" unique_id=772532724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_axn7i")
+
+[node name="fire" type="MeshInstance3D" parent="StaticBody3D" unique_id=147849913]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.335, 0.1, 0.836)
+mesh = SubResource("SphereMesh_axn7i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1569597532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.335, 0.1, 0.836)
+shape = SubResource("SphereShape3D_axn7i")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1664129469]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=782809662]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.019025803, -0.047906756, -0.047676086)
+shape = SubResource("BoxShape3D_bdbjw")
+
+[node name="playerSit" type="Marker3D" parent="." unique_id=1674066773]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5920596, 0, 1.0087858)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

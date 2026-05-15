@@ -5,8 +5,6 @@ var camera
 
 var DAYTIME
 
-var time
-
 var hud_open:bool
 
 var inv
@@ -21,6 +19,12 @@ var inventoryItems:Array = [
 	"res://items/cookie.tres",
 	"res://items/strawberry.tres",
 	"res://items/apple.tres"
+	]
+	
+var resources = [
+	"res://items/apple.tres",
+	"res://items/ginseng.tres",
+	"res://items/strawberry.tres",
 	]
 
 #global function to change player attributes
@@ -39,7 +43,7 @@ func attribute(changes:Dictionary, timerTime:int=999):
 	if changes.has("weight"):
 		playerStat.weight = playerStat.weight + playerStat.weight*(changes.weight/100)
 	print(playerStat)
-	if time != 999:
+	if timerTime != 999:
 		await get_tree().create_timer(timerTime).timeout
 		playerStat = save
 		print(playerStat)

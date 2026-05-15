@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://bnjcq3bx6m8cg"]
 
+[ext_resource type="Script" uid="uid://cram8nsomys2y" path="res://Scripts/tree.gd" id="1_1gi73"]
 [ext_resource type="Texture2D" uid="uid://pgidfxo5mnnh" path="res://textures/model textures/bark03.png" id="1_wgeh5"]
 [ext_resource type="Texture2D" uid="uid://8uwfx6gy881h" path="res://textures/model textures/bark03_n.png" id="2_1gi73"]
 [ext_resource type="Texture2D" uid="uid://2d0pg5ton0jx" path="res://textures/model textures/1234.png" id="3_ggv6g"]
@@ -138,7 +139,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_wgeh5")
 
-[node name="Tree3" type="Node3D" unique_id=691060319]
+[node name="Tree3" type="Node3D" unique_id=691060319 node_paths=PackedStringArray("marker", "timerNode")]
+script = ExtResource("1_1gi73")
+marker = NodePath("Marker3D")
+timerNode = NodePath("Timer")
 
 [node name="Tree3" type="MeshInstance3D" parent="." unique_id=674619401]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -161,3 +165,8 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 cast_shadow = 3
 mesh = SubResource("ArrayMesh_1gi73")
 skeleton = NodePath("../..")
+
+[node name="Timer" type="Timer" parent="." unique_id=878099412]
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=105338947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7041316, 2.2465575)

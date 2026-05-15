@@ -2,8 +2,7 @@ extends Node3D
 
 @export var resource:ItemData
 
-func _init():
-	if resource == null: return
+func _ready():
 	$Sprite3D.texture = resource.texture
 	$AnimationPlayer.play("idle")
 	

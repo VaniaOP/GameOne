@@ -267,6 +267,7 @@ environment = SubResource("Environment_vivmo")
 
 [node name="Sun" type="DirectionalLight3D" parent="." unique_id=896065248]
 light_color = Color(1, 0.42451906, 0, 1)
+light_energy = 0.0
 light_angular_distance = 0.5
 shadow_enabled = true
 shadow_caster_mask = 4294901759

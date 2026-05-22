@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-class_name PLAYER
+class_name playerClass
 
 #const ROT_SPEED = 0.05
 const GRAVITY = -20
@@ -19,37 +19,39 @@ func _ready():
 
 func _physics_process(delta):
 	#Set velocity to zero
-	if !GScript.hud_open:	
-		if is_on_floor():
-			velocity = Vector3.ZERO
-			if move_speed:
-				#add run and crouch
-				#may not be the best approach, but it works
-				if Input.is_action_pressed("shift"):
-					S('Run', 'Run')
-					move_speed *= 2.5
-				elif Input.is_action_pressed("ctrl"):
-					S('Sneak', 'Sneak')
-					move_speed *= 2
-				else:
-					S('Walk', 'Walk')
-				velocity.z = move_speed * SPEED
-				velocity = velocity.rotated(Vector3.UP, rotation.y)
-			else:
-				S('Idle', 'Idle')
-			if Input.is_action_just_pressed("space"):
-				S('Jump', 'Jump')
-				velocity.y = 8
-		else:
-			velocity.y += GRAVITY*delta
-		if GScript.playerStat.health == 0:
-			print("dead")
-			#player died
-			#have to script
-		move_and_slide()
-	else:
+	if GScript.hud_open:
 		velocity = Vector3.ZERO
 		S('Idle', 'Idle')
+		return
+	if is_on_floor():
+		velocity = Vector3.ZERO
+		if move_speed:
+			#add run and crouch
+			#may not be the best approach, but it works
+			if Input.is_action_pressed("shift"):
+				S('Run', 'Run')
+				move_speed *= 2.5
+			elif Input.is_action_pressed("ctrl"):
+				S('Sneak', 'Sneak')
+				move_speed *= 2
+			else:
+				S('Walk', 'Walk')
+			velocity.z = move_speed * SPEED
+			velocity = velocity.rotated(Vector3.UP, rotation.y)
+		else:
+			S('Idle', 'Idle')
+		if Input.is_action_just_pressed("space"):
+			S('Jump', 'Jump')
+			velocity.y = 8
+	else:
+		velocity.y += GRAVITY*delta
+	if GScript.playerStat.health == 0:
+		print("dead")
+		#player died
+		#have to script
+	
+	move_and_slide()
+	
 
 func S(s, a):
 	if s && s != state:

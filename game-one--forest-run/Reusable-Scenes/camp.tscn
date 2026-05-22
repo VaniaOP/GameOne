@@ -3,8 +3,10 @@
 [ext_resource type="Script" uid="uid://cvr1ybqwhtwyp" path="res://Scripts/camp.gd" id="1_axn7i"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_irbtq"]
+size = Vector3(2, 1.6, 2.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_axn7i"]
+size = Vector3(2, 1.6, 2.2)
 
 [sub_resource type="SphereMesh" id="SphereMesh_axn7i"]
 radius = 0.1
@@ -14,7 +16,7 @@ height = 0.2
 radius = 0.1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bdbjw"]
-size = Vector3(2.5, 2.5, 2.5)
+size = Vector3(3.460144, 3, 4.4385986)
 
 [node name="camp" type="Node3D" unique_id=1222015121]
 script = ExtResource("1_axn7i")
@@ -30,20 +32,55 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_axn7i")
 
 [node name="fire" type="MeshInstance3D" parent="StaticBody3D" unique_id=147849913]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.335, 0.1, 0.836)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0.1, 2.5)
 mesh = SubResource("SphereMesh_axn7i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1569597532]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.335, 0.1, 0.836)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0.1, 2.5)
 shape = SubResource("SphereShape3D_axn7i")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1664129469]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=782809662]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.019025803, -0.047906756, -0.047676086)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025665283, -0.20969379, 0.84625244)
 shape = SubResource("BoxShape3D_bdbjw")
 
 [node name="playerSit" type="Marker3D" parent="." unique_id=1674066773]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5920596, 0, 1.0087858)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5920596, 0, 2.500029)
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1274502452]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=295558143]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = 114.0
+offset_right = 37.0
+offset_bottom = 172.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/VBoxContainer" unique_id=1652082421]
+layout_mode = 2
+
+[node name="rest?" type="Label" parent="CanvasLayer/VBoxContainer/PanelContainer" unique_id=465622773]
+layout_mode = 2
+text = "REST?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer" unique_id=2076185908]
+layout_mode = 2
+
+[node name="rest" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer" unique_id=1714893532]
+layout_mode = 2
+text = "Yes"
+
+[node name="no" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer" unique_id=858789557]
+layout_mode = 2
+text = "NO"
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainer/rest" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainer/no" to="." method="_on_no_pressed"]

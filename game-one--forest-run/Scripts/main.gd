@@ -22,10 +22,17 @@ func _ready() -> void:
 	#$weather_timer.wait_time = randi_range(3, 6)
 	$weather_timer.start()
 		
-func _process(_delta: float) -> void:
+var quitFrames = 0
+		
+func _process(delta: float) -> void:
+	#if GScript.hud_open:
 	SimpleGrass.set_player_position($Player.position)
+	if Input.is_action_pressed("quit"):
+		quitFrames += delta
+		if quitFrames >= 1:
+			get_tree().quit()
 	if Input.is_action_just_released("quit"):
-		get_tree().quit()
+		quitFrames = 0
 	GScript.DAYTIME = daytime
 	#used to check weather switch
 	if Input.is_action_just_released("change_weather"):

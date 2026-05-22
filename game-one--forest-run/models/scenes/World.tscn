@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://nxmfr1vqyxsq" path="res://models/scenes/tree.tscn" id="7_fp3u7"]
 [ext_resource type="PackedScene" uid="uid://bx7gej1eax4js" path="res://models/scenes/tree_2.tscn" id="8_kletk"]
 [ext_resource type="PackedScene" uid="uid://bnjcq3bx6m8cg" path="res://models/scenes/tree_3.tscn" id="9_yrctn"]
+[ext_resource type="PackedScene" uid="uid://d1lyaxh8fhhkw" path="res://Reusable-Scenes/camp.tscn" id="10_y0m61"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mmual"]
 resource_local_to_scene = true
@@ -75,12 +76,12 @@ shader_type = "Classic4"
 custom_shader = null
 custom_globalmap_shader = null
 texture_set = ExtResource("3_4bdd0")
-render_layers = 3
+render_layers = 1
 cast_shadow = 2
-shader_params/u_ground_uv_scale_per_texture = Vector4(20, 20, 20, 20)
+shader_params/u_ground_uv_scale_per_texture = Vector4(20.157, 20.572, 20.186, 19.832)
 shader_params/u_depth_blending = false
 shader_params/u_triplanar = true
-shader_params/u_tile_reduction = Vector4(1, 0, 0, 0)
+shader_params/u_tile_reduction = Vector4(1.479, -0.634, 0.484, -1.227)
 shader_params/u_globalmap_blend_start = 0.0
 shader_params/u_globalmap_blend_distance = 0.0
 shader_params/u_colormap_opacity_per_texture = Vector4(1, 1, 1, 1)
@@ -717,3 +718,6 @@ transform = Transform3D(-0.80901694, 0, 0.58778536, 0, 1, 0, -0.58778536, 0, -0.
 
 [node name="tree8" parent="trees/big8" unique_id=520614613 instance=ExtResource("7_fp3u7")]
 transform = Transform3D(-0.78173816, -0.23958275, 0.57574785, -0.14844139, 0.96820736, 0.20134433, -0.60568196, 0.07193372, -0.7924488, -93.56039, 248.06955, -29.999985)
+
+[node name="camp" parent="." unique_id=1222015121 instance=ExtResource("10_y0m61")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.24517, 312.3764, -62.092346)

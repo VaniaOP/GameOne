@@ -5,8 +5,8 @@ var timerTime:int
 @export var marker:Node
 @export var timerNode:Node
 
-var minTime:int = 20
-var maxTime:int = 300
+var minTime:int = 2
+var maxTime:int = 30
 
 const collectable:String = "res://models/scenes/collectable.tscn"
 
@@ -25,4 +25,3 @@ func timer():
 	marker.add_child(scene)
 	timerTime = randi_range(minTime, maxTime)
 	timerNode.wait_time = timerTime
-	

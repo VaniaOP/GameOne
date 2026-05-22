@@ -7,12 +7,15 @@ func updateMaxHealth():
 	$HealthBar.max_value = GScript.playerStat.maxHealth
 	$health.text = "Max health: " + str(GScript.playerStat.maxHealth)
 	set_health_bar()
+	self.visible = true
+	await get_tree().create_timer(5.0).timeout
+	self.visible = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	set_health_bar()
 	if Input.is_action_just_pressed('hud'):
 		self.visible = true
-		await get_tree().create_timer(5.0).timeout
+		await get_tree().create_timer(10.0).timeout
 		self.visible = false
 
 func _ready() -> void:

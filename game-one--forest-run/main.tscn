@@ -200,7 +200,7 @@ daytime = "night"
 target_node = NodePath("../Player")
 
 [node name="Player" parent="." unique_id=914964442 instance=ExtResource("2_7mycd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.20845, 490.2382, -10.47355)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.04747, 499.09555, -56.857864)
 
 [node name="rain" type="GPUParticles3D" parent="Player" unique_id=59580134]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 222.93845, 0)
@@ -267,7 +267,6 @@ environment = SubResource("Environment_vivmo")
 
 [node name="Sun" type="DirectionalLight3D" parent="." unique_id=896065248]
 light_color = Color(1, 0.42451906, 0, 1)
-light_energy = 0.0
 light_angular_distance = 0.5
 shadow_enabled = true
 shadow_caster_mask = 4294901759

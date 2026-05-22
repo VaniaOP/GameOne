@@ -26,43 +26,41 @@ var resources = [
 	"res://items/ginseng.tres",
 	"res://items/strawberry.tres",
 	]
+	
+
+var stack:Array
 
 #global function to change player attributes
 #time set to 999 = permanent upgrade
 func attribute(changes:Dictionary, timerTime:int=999):
 	var save = playerStat.duplicate()
-	print(playerStat)
-	update.emit()
+	stack.append(save)
 	if changes.has("maxHealth"):
-		playerStat.maxHealth = playerStat.maxHealth + playerStat.maxHealth*(changes.maxHealth/100)
+		playerStat.maxHealth *= (1+changes.maxHealth/100)
 	if changes.has("health"):
-		playerStat.health = playerStat.health + playerStat.health*(changes.health/100)
+		playerStat.health *= (1+changes.health/100)
 		clamp(playerStat.Health, 0, playerStat.maxHealth)
 	if changes.has("agility"):
-		playerStat.agility = playerStat.agility + playerStat.agility*(changes.agility/100)
+		playerStat.agility *= (1+changes.agility/100)
 	if changes.has("weight"):
-		playerStat.weight = playerStat.weight + playerStat.weight*(changes.weight/100)
-	print(playerStat)
+		playerStat.weight *= (1+changes.weight/100)
+	update.emit()
 	if timerTime != 999:
 		await get_tree().create_timer(timerTime).timeout
-		playerStat = save
-		print(playerStat)
+		playerStat = stack[-1]
+		stack.remove_at(-1)
 		update.emit()
-	return
 
 #function to check singal
-#func _process(_delta: float) -> void:
-	#if Input.is_action_just_pressed("hud"):
-		##create a dictionary to pass to the function
-		##keys have to correspond to keys in playerStat dict
-		##values are percentages
-		##values have to be floats
-		#var attributes:Dictionary = {'maxHealth':20.0, 'agility':20.0}
-		##dont set time if you want upgrades permanent
-		#attribute(attributes, 2)
-
-#this process function somehow slows down the scene
-#maybe search for a better way for applying attributes
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("hud"):
+		#create a dictionary to pass to the function
+		#keys have to correspond to keys in playerStat dict
+		#values are percentages
+		#values have to be floats
+		var attributes:Dictionary = {'maxHealth':20.0, 'agility':20.0}
+		#dont set time if you want upgrades permanent
+		attribute(attributes, 5)
 
 
 #add item to inventory, if full return 999

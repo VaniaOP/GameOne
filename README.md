@@ -11,9 +11,9 @@ Game, where you can run in a forest, collect herbs, shrooms and leafs. Explore C
 * attack
 * eat
 > * jump
-* Collect Items
+> * Collect Items
 * Set up Camp
-* Inventory
+> * Inventory
 * Cook Food
 * Start fire in camp
 * Sleep
@@ -24,7 +24,7 @@ Game, where you can run in a forest, collect herbs, shrooms and leafs. Explore C
 > * 3d
 > * Free camera
 > * Day/Night cycle
-* Weather
+> * Weather
 * Character Switch (?)
 * Pause / Settings
 * Controller / Keyboard support
